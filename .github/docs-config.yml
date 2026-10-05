@@ -1,0 +1,2 @@
+kind: generic
+description: Auto-detected source of truth for the daukle organization. A zero-dependency detector reads every public repo's plugin.lua and writes plugins.json, so the guide and the examples discover each other without submodules.

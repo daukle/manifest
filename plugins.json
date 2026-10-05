@@ -1,0 +1,295 @@
+{
+  "generatedAt": "2026-10-05T10:16:47.884Z",
+  "core": {
+    "id": "daukle",
+    "repo": "daukle/daukle",
+    "kind": "core",
+    "defaultBranch": "main",
+    "wiki": false,
+    "examples": [],
+    "release": {
+      "tag": "0.3.0",
+      "publishedAt": "2026-10-05T10:12:35Z"
+    }
+  },
+  "plugins": [
+    {
+      "id": "c",
+      "repo": "daukle/c",
+      "kind": "toolchain",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [
+        "c-hello-executable"
+      ],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-03T09:38:51Z"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "provision",
+        "exec"
+      ],
+      "exports": [
+        "lib/compilers"
+      ],
+      "requires": []
+    },
+    {
+      "id": "java",
+      "repo": "daukle/java",
+      "kind": "toolchain",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [
+        "java-hello-jar"
+      ],
+      "release": {
+        "tag": "1.2.0",
+        "publishedAt": "2026-10-05T10:09:15Z"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "provision",
+        "artifact",
+        "exec",
+        "write"
+      ],
+      "exports": [
+        "lib/jdks",
+        "lib/launcher"
+      ],
+      "requires": []
+    },
+    {
+      "id": "node",
+      "repo": "daukle/node",
+      "kind": "toolchain",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [
+        "node-hello-dependency"
+      ],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-03T21:25:18Z"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "provision",
+        "exec"
+      ],
+      "exports": [
+        "lib/runtimes"
+      ],
+      "requires": []
+    },
+    {
+      "id": "maven",
+      "repo": "daukle/maven",
+      "kind": "resolver",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-05T10:04:45Z"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "fetch",
+        "cache",
+        "pin",
+        "write"
+      ],
+      "exports": [
+        "lib/xml",
+        "lib/pom",
+        "lib/graph"
+      ],
+      "requires": []
+    },
+    {
+      "id": "npm",
+      "repo": "daukle/npm",
+      "kind": "language",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-01T18:55:00Z"
+      },
+      "declares": [
+        "language"
+      ],
+      "uses": [
+        "json_set",
+        "json_parse"
+      ],
+      "exports": [],
+      "requires": []
+    },
+    {
+      "id": "github",
+      "repo": "daukle/github",
+      "kind": "source",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-03T21:25:32Z"
+      },
+      "declares": [
+        "source"
+      ],
+      "uses": [
+        "fetch",
+        "cache",
+        "env",
+        "parse"
+      ],
+      "exports": [],
+      "requires": []
+    },
+    {
+      "id": "path",
+      "repo": "daukle/path",
+      "kind": "source",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-01T18:55:03Z"
+      },
+      "declares": [
+        "source"
+      ],
+      "uses": [
+        "read",
+        "parse"
+      ],
+      "exports": [],
+      "requires": []
+    },
+    {
+      "id": "lifecycle",
+      "repo": "daukle/lifecycle",
+      "kind": "library",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-02T11:00:49Z"
+      },
+      "declares": [],
+      "uses": [],
+      "exports": [
+        "lib/names"
+      ],
+      "requires": []
+    },
+    {
+      "id": "cmake",
+      "repo": "daukle/cmake",
+      "kind": "toolchain",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [
+        "cmake-c-executable",
+        "cmake-cpp-executable"
+      ],
+      "release": {
+        "tag": "1.1.0",
+        "publishedAt": "2026-10-03T21:25:00Z"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "provision",
+        "exec"
+      ],
+      "exports": [],
+      "requires": [
+        {
+          "alias": "lifecycle",
+          "repo": "daukle/lifecycle",
+          "id": "lifecycle"
+        },
+        {
+          "alias": "cc",
+          "repo": "daukle/c",
+          "id": "c"
+        }
+      ]
+    },
+    {
+      "id": "gradle",
+      "repo": "daukle/gradle",
+      "kind": "toolchain",
+      "defaultBranch": "main",
+      "wiki": false,
+      "examples": [],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-05T10:09:20Z"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "provision",
+        "artifact",
+        "exec",
+        "write"
+      ],
+      "exports": [
+        "lib/distributions",
+        "lib/build_file",
+        "lib/junit"
+      ],
+      "requires": [
+        {
+          "alias": "java",
+          "repo": "daukle/java",
+          "id": "java"
+        }
+      ]
+    }
+  ],
+  "guide": {
+    "id": "guide",
+    "repo": "daukle/guide",
+    "kind": "guide",
+    "defaultBranch": "main",
+    "wiki": false,
+    "examples": [],
+    "release": null
+  },
+  "examples": {
+    "id": "examples",
+    "repo": "daukle/examples",
+    "kind": "examples",
+    "defaultBranch": "main",
+    "wiki": false,
+    "examples": [],
+    "release": {
+      "tag": "greeter-2.0.0",
+      "publishedAt": "2026-10-02T12:29:58Z"
+    }
+  },
+  "warnings": []
+}

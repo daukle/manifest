@@ -1,0 +1,5 @@
+# plugins.json is compared against what the detector writes, which is LF on every
+# platform. Letting core.autocrlf rewrite the checkout would make a regenerated
+# file differ from the committed one on Windows for a reason that has nothing to
+# do with the org it describes.
+* -text
