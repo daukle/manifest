@@ -1,11 +1,13 @@
 {
-  "generatedAt": "2026-10-05T10:31:41.769Z",
+  "generatedAt": "2026-10-05T10:33:55.691Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
     "kind": "core",
     "defaultBranch": "main",
-    "wiki": true,
+    "wikiPages": [
+      "index.md"
+    ],
     "examples": [],
     "release": {
       "tag": "0.3.0",
@@ -18,7 +20,9 @@
       "repo": "daukle/c",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [
         "c-hello-executable"
       ],
@@ -43,7 +47,9 @@
       "repo": "daukle/java",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [
         "java-hello-jar"
       ],
@@ -71,7 +77,9 @@
       "repo": "daukle/node",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [
         "node-hello-dependency"
       ],
@@ -96,7 +104,9 @@
       "repo": "daukle/maven",
       "kind": "resolver",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -123,7 +133,9 @@
       "repo": "daukle/npm",
       "kind": "language",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -144,7 +156,9 @@
       "repo": "daukle/github",
       "kind": "source",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -167,7 +181,9 @@
       "repo": "daukle/path",
       "kind": "source",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -188,7 +204,9 @@
       "repo": "daukle/lifecycle",
       "kind": "library",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -206,7 +224,9 @@
       "repo": "daukle/cmake",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [
         "cmake-c-executable",
         "cmake-cpp-executable"
@@ -241,7 +261,9 @@
       "repo": "daukle/gradle",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": true,
+      "wikiPages": [
+        "index.md"
+      ],
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -275,7 +297,7 @@
     "repo": "daukle/guide",
     "kind": "guide",
     "defaultBranch": "main",
-    "wiki": false,
+    "wikiPages": [],
     "examples": [],
     "release": null
   },
@@ -284,7 +306,9 @@
     "repo": "daukle/examples",
     "kind": "examples",
     "defaultBranch": "main",
-    "wiki": true,
+    "wikiPages": [
+      "index.md"
+    ],
     "examples": [
       "lua-logic",
       "npm-dependency-writer",

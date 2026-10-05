@@ -43,10 +43,15 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     // The default branch and not development: what a consumer resolves is what
     // is released, and the generated README already only exists there.
     const pluginLua = await client.getFile(repo, "plugin.lua", defaultBranch);
-    const wikiIndex = await client.getFile(repo, "wiki/index.md", defaultBranch);
+    // The page NAMES and not merely whether a wiki exists. This runs with a
+    // token; the site that consumes it does not, and listing a directory costs
+    // a rate-limited contents call while fetching a known path over raw costs
+    // none. Recording the names here is what keeps the site's build off the
+    // API entirely.
+    const wikiPages = await client.listFiles(repo, "wiki", defaultBranch, ".md");
     files[repo] = {
       pluginLua,
-      hasWiki: wikiIndex !== null,
+      wikiPages,
       examples: await examplesOf(client, repo, name, defaultBranch),
       release: await client.latestRelease(repo),
     };

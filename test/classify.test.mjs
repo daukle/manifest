@@ -89,7 +89,7 @@ test("classify skips ignored, superseded and plugin-less repos", () => {
     { repo: "daukle/nothing", name: "nothing", defaultBranch: "main" },
   ];
   const files = {
-    "daukle/maven": { pluginLua: MAVEN, hasWiki: true, examples: ["a"] },
+    "daukle/maven": { pluginLua: MAVEN, wikiPages: ["index.md"], examples: ["a"] },
     "daukle/npm-pre20260922": { pluginLua: NPM },
     "daukle/nothing": {},
   };
@@ -97,6 +97,6 @@ test("classify skips ignored, superseded and plugin-less repos", () => {
   assert.deepEqual(out.map((entry) => entry.id), ["daukle", "maven", "guide"]);
   assert.equal(out.find((entry) => entry.id === "daukle").kind, "core");
   assert.equal(out.find((entry) => entry.id === "guide").kind, "guide");
-  assert.equal(out.find((entry) => entry.id === "maven").wiki, true);
+  assert.deepEqual(out.find((entry) => entry.id === "maven").wikiPages, ["index.md"]);
   assert.deepEqual(out.find((entry) => entry.id === "maven").examples, ["a"]);
 });
