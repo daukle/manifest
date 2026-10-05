@@ -6,12 +6,28 @@ import { buildManifest } from "./manifest.mjs";
 
 const ORG = "daukle";
 
+/**
+ * Where a repository keeps its examples.
+ *
+ * @implNote everywhere in the org an example sits under `examples/` and the
+ * harness under `test/`. In `daukle/examples` the repository IS the examples,
+ * so they sit at the ROOT and `test/` is their sibling. That one inconsistency
+ * is real and documented in that repository, and it has to be read rather than
+ * assumed away: listing `examples/` there finds nothing and would report the
+ * repository that holds every cross-plugin example as holding none.
+ */
+async function examplesOf(client, repo, name, ref) {
+  if (name !== "examples") return client.listDirectory(repo, "examples", ref);
+  const roots = await client.listDirectory(repo, "", ref);
+  return roots.filter((entry) => entry !== "test" && !entry.startsWith("."));
+}
+
 export async function runDetect({ org = ORG, client, generatedAt }) {
   const repos = (await client.listOrgRepos(org)).filter(
     (repo) => !IGNORED[repo.name] && !SUPERSEDED.test(repo.name) && !repo.private);
 
   const files = {};
-  for (const { repo, defaultBranch } of repos) {
+  for (const { repo, name, defaultBranch } of repos) {
     // The default branch and not development: what a consumer resolves is what
     // is released, and the generated README already only exists there.
     const pluginLua = await client.getFile(repo, "plugin.lua", defaultBranch);
@@ -19,7 +35,7 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     files[repo] = {
       pluginLua,
       hasWiki: wikiIndex !== null,
-      examples: await client.listDirectory(repo, "examples", defaultBranch),
+      examples: await examplesOf(client, repo, name, defaultBranch),
       release: await client.latestRelease(repo),
     };
   }

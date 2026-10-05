@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T10:23:47.110Z",
+  "generatedAt": "2026-10-05T10:29:32.655Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -285,7 +285,12 @@
     "kind": "examples",
     "defaultBranch": "main",
     "wiki": false,
-    "examples": [],
+    "examples": [
+      "lua-logic",
+      "npm-dependency-writer",
+      "npm-github-source",
+      "wrapper-bootstrap"
+    ],
     "release": {
       "tag": "greeter-2.0.0",
       "publishedAt": "2026-10-02T12:29:58Z"
