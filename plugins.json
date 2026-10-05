@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-05T10:16:47.884Z",
+  "generatedAt": "2026-10-05T10:23:00.361Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
     "kind": "core",
     "defaultBranch": "main",
-    "wiki": false,
+    "wiki": true,
     "examples": [],
     "release": {
       "tag": "0.3.0",
@@ -18,7 +18,7 @@
       "repo": "daukle/c",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [
         "c-hello-executable"
       ],
@@ -43,7 +43,7 @@
       "repo": "daukle/java",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [
         "java-hello-jar"
       ],
@@ -71,7 +71,7 @@
       "repo": "daukle/node",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [
         "node-hello-dependency"
       ],
@@ -96,7 +96,7 @@
       "repo": "daukle/maven",
       "kind": "resolver",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -123,7 +123,7 @@
       "repo": "daukle/npm",
       "kind": "language",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -144,7 +144,7 @@
       "repo": "daukle/github",
       "kind": "source",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -167,7 +167,7 @@
       "repo": "daukle/path",
       "kind": "source",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -188,7 +188,7 @@
       "repo": "daukle/lifecycle",
       "kind": "library",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [],
       "release": {
         "tag": "1.0.0",
@@ -206,7 +206,7 @@
       "repo": "daukle/cmake",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [
         "cmake-c-executable",
         "cmake-cpp-executable"
@@ -241,7 +241,7 @@
       "repo": "daukle/gradle",
       "kind": "toolchain",
       "defaultBranch": "main",
-      "wiki": false,
+      "wiki": true,
       "examples": [],
       "release": {
         "tag": "1.0.0",
