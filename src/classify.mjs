@@ -118,7 +118,7 @@ export function classify(repos, files) {
       repo: repo.repo,
       kind: fixed || null,
       defaultBranch: repo.defaultBranch,
-      wiki: Boolean(found.hasWiki),
+      wikiPages: found.wikiPages || [],
       examples: found.examples || [],
       release: found.release || null,
     };

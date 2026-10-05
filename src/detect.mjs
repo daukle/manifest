@@ -6,20 +6,53 @@ import { buildManifest } from "./manifest.mjs";
 
 const ORG = "daukle";
 
+/**
+ * Where a repository keeps its examples.
+ *
+ * @implNote everywhere in the org an example sits under `examples/` and the
+ * harness under `test/`. In `daukle/examples` the repository IS the examples,
+ * so they sit at the ROOT and `test/` is their sibling. That one inconsistency
+ * is real and documented in that repository, and it has to be read rather than
+ * assumed away: listing `examples/` there finds nothing and would report the
+ * repository that holds every cross-plugin example as holding none.
+ */
+async function examplesOf(client, repo, name, ref) {
+  if (name !== "examples") return client.listDirectory(repo, "examples", ref);
+
+  // An example is a directory carrying an ABOUT.md, which is the definition the
+  // README generator already uses. An exclusion list was tried first and was
+  // wrong within the hour: it named `test` and then `wiki/` was added and
+  // appeared as an example. That repository's own notes warn that its harness
+  // is skipped "by accident rather than by rule", and this is the same accident
+  // one layer out.
+  const roots = await client.listDirectory(repo, "", ref);
+  const found = [];
+  for (const entry of roots) {
+    if (entry.startsWith(".")) continue;
+    if (await client.getFile(repo, `${entry}/ABOUT.md`, ref)) found.push(entry);
+  }
+  return found;
+}
+
 export async function runDetect({ org = ORG, client, generatedAt }) {
   const repos = (await client.listOrgRepos(org)).filter(
     (repo) => !IGNORED[repo.name] && !SUPERSEDED.test(repo.name) && !repo.private);
 
   const files = {};
-  for (const { repo, defaultBranch } of repos) {
+  for (const { repo, name, defaultBranch } of repos) {
     // The default branch and not development: what a consumer resolves is what
     // is released, and the generated README already only exists there.
     const pluginLua = await client.getFile(repo, "plugin.lua", defaultBranch);
-    const wikiIndex = await client.getFile(repo, "wiki/index.md", defaultBranch);
+    // The page NAMES and not merely whether a wiki exists. This runs with a
+    // token; the site that consumes it does not, and listing a directory costs
+    // a rate-limited contents call while fetching a known path over raw costs
+    // none. Recording the names here is what keeps the site's build off the
+    // API entirely.
+    const wikiPages = await client.listFiles(repo, "wiki", defaultBranch, ".md");
     files[repo] = {
       pluginLua,
-      hasWiki: wikiIndex !== null,
-      examples: await client.listDirectory(repo, "examples", defaultBranch),
+      wikiPages,
+      examples: await examplesOf(client, repo, name, defaultBranch),
       release: await client.latestRelease(repo),
     };
   }

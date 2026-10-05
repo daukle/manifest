@@ -49,6 +49,14 @@ export function makeClient({ token, fetchImpl = fetch } = {}) {
       return response.text();
     },
 
+    async listFiles(repo, path, ref, suffix = "") {
+      const entries = await json(`/repos/${repo}/contents/${path}?ref=${ref}`);
+      if (!Array.isArray(entries)) return [];
+      return entries
+        .filter((entry) => entry.type === "file" && entry.name.endsWith(suffix))
+        .map((entry) => entry.name);
+    },
+
     async listDirectory(repo, path, ref) {
       const entries = await json(`/repos/${repo}/contents/${path}?ref=${ref}`);
       if (!Array.isArray(entries)) return [];
