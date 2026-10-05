@@ -13,6 +13,10 @@ jobs:
       toolchains: node
       runners: '["ubuntu-latest", "windows-latest", "macos-latest"]'
       node_install: 'echo "no dependencies: that is the point"'
+      # Empty rather than omitted: the shared workflow defaults node_build to
+      # "npm run build", and this package has no build step, so the default
+      # failed every runner with "Missing script: build".
+      node_build: ''
       node_test: 'npm test'
     secrets:
       envPAT: ${{ secrets.PAT }}

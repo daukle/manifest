@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T10:33:55.691Z",
+  "generatedAt": "2026-10-05T11:43:45.742Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -264,7 +264,9 @@
       "wikiPages": [
         "index.md"
       ],
-      "examples": [],
+      "examples": [
+        "gradle-hello-no-build-file"
+      ],
       "release": {
         "tag": "1.0.0",
         "publishedAt": "2026-10-05T10:09:20Z"
