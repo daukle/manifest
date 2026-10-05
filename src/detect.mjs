@@ -18,8 +18,20 @@ const ORG = "daukle";
  */
 async function examplesOf(client, repo, name, ref) {
   if (name !== "examples") return client.listDirectory(repo, "examples", ref);
+
+  // An example is a directory carrying an ABOUT.md, which is the definition the
+  // README generator already uses. An exclusion list was tried first and was
+  // wrong within the hour: it named `test` and then `wiki/` was added and
+  // appeared as an example. That repository's own notes warn that its harness
+  // is skipped "by accident rather than by rule", and this is the same accident
+  // one layer out.
   const roots = await client.listDirectory(repo, "", ref);
-  return roots.filter((entry) => entry !== "test" && !entry.startsWith("."));
+  const found = [];
+  for (const entry of roots) {
+    if (entry.startsWith(".")) continue;
+    if (await client.getFile(repo, `${entry}/ABOUT.md`, ref)) found.push(entry);
+  }
+  return found;
 }
 
 export async function runDetect({ org = ORG, client, generatedAt }) {
