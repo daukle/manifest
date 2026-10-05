@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T10:29:32.655Z",
+  "generatedAt": "2026-10-05T10:30:46.769Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -284,11 +284,12 @@
     "repo": "daukle/examples",
     "kind": "examples",
     "defaultBranch": "main",
-    "wiki": false,
+    "wiki": true,
     "examples": [
       "lua-logic",
       "npm-dependency-writer",
       "npm-github-source",
+      "wiki",
       "wrapper-bootstrap"
     ],
     "release": {
