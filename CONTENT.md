@@ -4,7 +4,7 @@ The **auto-detected** source of truth for the daukle organization. A zero-depend
 scans every public repo in the org, reads each one's `plugin.lua` on its default branch, and writes
 `plugins.json` at the root.
 
-`daukle/guide` and `daukle/examples` read it to discover what exists. **Nothing is submoduled and
+`daukle/guide` reads it to discover what exists. **Nothing is submoduled and
 nothing is listed by hand**: a gitlink is a pinned SHA somebody has to maintain, and a hand-written
 list is a list that is wrong the day a repository is added.
 
