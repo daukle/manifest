@@ -1,14 +1,22 @@
 {
-  "generatedAt": "2026-10-05T11:43:45.742Z",
+  "generatedAt": "2026-10-06T12:33:47.315Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
     "kind": "core",
     "defaultBranch": "main",
     "wikiPages": [
+      "01-first-project.md",
+      "02-plugins.md",
+      "03-logic-layer.md",
+      "04-dependencies-and-compiling.md",
       "index.md"
     ],
-    "examples": [],
+    "examples": [
+      "daukle-local-plugin",
+      "daukle-logic-layer",
+      "daukle-wrapper-bootstrap"
+    ],
     "release": {
       "tag": "0.3.0",
       "publishedAt": "2026-10-05T10:12:35Z"
@@ -51,7 +59,8 @@
         "index.md"
       ],
       "examples": [
-        "java-hello-jar"
+        "java-hello-jar",
+        "java-pinned-classpath"
       ],
       "release": {
         "tag": "1.2.0",
@@ -136,7 +145,9 @@
       "wikiPages": [
         "index.md"
       ],
-      "examples": [],
+      "examples": [
+        "npm-dependency-ledger"
+      ],
       "release": {
         "tag": "1.0.0",
         "publishedAt": "2026-10-01T18:55:00Z"
@@ -159,7 +170,9 @@
       "wikiPages": [
         "index.md"
       ],
-      "examples": [],
+      "examples": [
+        "github-release-source"
+      ],
       "release": {
         "tag": "1.0.0",
         "publishedAt": "2026-10-03T21:25:32Z"
