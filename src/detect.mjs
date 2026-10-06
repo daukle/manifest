@@ -9,24 +9,16 @@ const ORG = "daukle";
 /**
  * Every example of one repository, with the files beneath it.
  *
- * @implNote everywhere in the org an example sits under `examples/` and the
- * harness under `test/`. In `daukle/examples` the repository IS the examples, so
- * they sit at the ROOT and `test/` is their sibling. That one inconsistency is
- * real and documented in that repository, and it has to be read rather than
- * assumed away: listing `examples/` there finds nothing and would report the
- * repository that holds every cross-plugin example as holding none.
- *
- * @implNote an example is a directory carrying an ABOUT.md, which is the
- * definition the README generator already uses. An exclusion list was tried
- * first and was wrong within the hour: it named `test` and then `wiki/` was
- * added and appeared as an example.
+ * @implNote an example is a directory under `examples/` carrying an ABOUT.md,
+ * which is the definition the README generator already uses. An exclusion list
+ * was tried first and was wrong within the hour: it named `test` and then
+ * `wiki/` was added and appeared as an example.
  */
-export function examplesFromTree(name, paths) {
-  const prefix = name === "examples" ? "" : "examples/";
+export function examplesFromTree(paths) {
   const byExample = new Map();
   for (const path of paths) {
-    if (!path.startsWith(prefix)) continue;
-    const rest = path.slice(prefix.length);
+    if (!path.startsWith("examples/")) continue;
+    const rest = path.slice("examples/".length);
     const slash = rest.indexOf("/");
     if (slash <= 0) continue;
     const example = rest.slice(0, slash);
@@ -40,19 +32,17 @@ export function examplesFromTree(name, paths) {
     .sort((left, right) => left.name.localeCompare(right.name));
 }
 
-async function examplesOf(client, repo, name, ref, tree) {
-  if (!tree.truncated) return examplesFromTree(name, tree.paths);
+async function examplesOf(client, repo, ref, tree) {
+  if (!tree.truncated) return examplesFromTree(tree.paths);
 
   // A truncated tree has lost paths without saying which, so fall back to the
   // per-directory listing rather than publish an example missing files.
-  const roots = name === "examples"
-    ? await client.listDirectory(repo, "", ref)
-    : await client.listDirectory(repo, "examples", ref);
   const found = [];
-  for (const entry of roots) {
+  for (const entry of await client.listDirectory(repo, "examples", ref)) {
     if (entry.startsWith(".")) continue;
-    const under = name === "examples" ? entry : `examples/${entry}`;
-    if (await client.getFile(repo, `${under}/ABOUT.md`, ref)) found.push({ name: entry, files: [] });
+    if (await client.getFile(repo, `examples/${entry}/ABOUT.md`, ref)) {
+      found.push({ name: entry, files: [] });
+    }
   }
   return found;
 }
@@ -76,7 +66,7 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     files[repo] = {
       pluginLua,
       wikiPages,
-      examples: await examplesOf(client, repo, name, defaultBranch, tree),
+      examples: await examplesOf(client, repo, defaultBranch, tree),
       release: await client.latestRelease(repo),
       tip: await client.tipOf(repo, defaultBranch),
     };

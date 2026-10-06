@@ -25,11 +25,10 @@ const DECLARATIONS = [
   ["publisher", /daukle\.publisher\s*\{/],
 ];
 
-// The three repositories that are not plugins and never will be.
+// The two repositories that are not plugins and never will be.
 const FIXED = {
   daukle: "core",
   guide: "guide",
-  examples: "examples",
 };
 
 function listField(text, field) {

@@ -43,15 +43,13 @@ test("a cycle still produces a manifest, because a cycle is a fact about the org
   assert.deepEqual(out.map((e) => e.id).sort(), ["a", "b"]);
 });
 
-test("core, guide and examples are lifted out of the plugin list", () => {
+test("core and guide are lifted out of the plugin list", () => {
   const built = buildManifest([
     entry("daukle", "core"),
     entry("guide", "guide"),
-    entry("examples", "examples"),
     entry("java", "toolchain"),
   ]);
   assert.equal(built.core.id, "daukle");
   assert.equal(built.guide.id, "guide");
-  assert.equal(built.examples.id, "examples");
   assert.deepEqual(built.plugins.map((e) => e.id), ["java"]);
 });
