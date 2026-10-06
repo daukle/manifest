@@ -20,7 +20,7 @@ const PLUGIN_TREE = [
 ];
 
 test("an example's files are relative to the example, not to the repository", () => {
-  assert.deepEqual(examplesFromTree("java", PLUGIN_TREE), [
+  assert.deepEqual(examplesFromTree(PLUGIN_TREE), [
     {
       name: "java-hello-jar",
       files: ["ABOUT.md", "daukle.toml", "src/main/java/com/example/Main.java"],
@@ -30,40 +30,21 @@ test("an example's files are relative to the example, not to the repository", ()
 });
 
 test("nothing outside examples/ becomes an example", () => {
-  const found = examplesFromTree("java", PLUGIN_TREE).map((e) => e.name);
+  const found = examplesFromTree(PLUGIN_TREE).map((e) => e.name);
   assert.deepEqual(found, ["java-hello-jar", "java-pinned-classpath"]);
 });
 
 test("a directory with no ABOUT.md is not an example, whatever else it holds", () => {
   // The rule the README generator already uses. An exclusion list was tried
   // first in this repository and named `test` just before `wiki/` was added.
-  assert.deepEqual(examplesFromTree("java", [
+  assert.deepEqual(examplesFromTree([
     "examples/undocumented/daukle.toml",
     "examples/undocumented/src/main.c",
   ]), []);
 });
 
-test("daukle/examples keeps its examples at the ROOT, and its siblings are not examples", () => {
-  const found = examplesFromTree("examples", [
-    "LICENSE",
-    "CONTENT.md",
-    ".github/workflows/test.yml",
-    "wiki/index.md",
-    "test/run.sh",
-    "lua-logic/ABOUT.md",
-    "lua-logic/daukle.lua",
-    "lua-logic/producer/daukle.toml",
-    "wrapper-bootstrap/ABOUT.md",
-    "wrapper-bootstrap/.daukle/wrapper.toml",
-  ]);
-  assert.deepEqual(found, [
-    { name: "lua-logic", files: ["ABOUT.md", "daukle.lua", "producer/daukle.toml"] },
-    { name: "wrapper-bootstrap", files: [".daukle/wrapper.toml", "ABOUT.md"] },
-  ]);
-});
-
-test("a dot directory at the root is never an example, even carrying an ABOUT.md", () => {
-  assert.deepEqual(examplesFromTree("examples", [".github/ABOUT.md"]), []);
+test("a dot directory is never an example, even carrying an ABOUT.md", () => {
+  assert.deepEqual(examplesFromTree(["examples/.scratch/ABOUT.md"]), []);
 });
 
 test("the order is by name, so the manifest does not churn on a re-run", () => {
@@ -72,6 +53,6 @@ test("the order is by name, so the manifest does not churn on a re-run", () => {
     "examples/alpha/ABOUT.md",
     "examples/mid/ABOUT.md",
   ];
-  assert.deepEqual(examplesFromTree("c", shuffled).map((e) => e.name),
+  assert.deepEqual(examplesFromTree(shuffled).map((e) => e.name),
                    ["alpha", "mid", "zeta"]);
 });

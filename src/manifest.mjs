@@ -1,7 +1,6 @@
 // Turning the classified rows into the document consumers read.
 
-const ORDER = ["core", "toolchain", "resolver", "language", "source", "library", "guide",
-               "examples"];
+const ORDER = ["core", "toolchain", "resolver", "language", "source", "library", "guide"];
 
 function byKindThenId(left, right) {
   const difference = ORDER.indexOf(left.kind) - ORDER.indexOf(right.kind);
@@ -65,14 +64,13 @@ export function buildManifest(entries, { generatedAt } = {}) {
 
   const core = ordered.find((entry) => entry.kind === "core") || null;
   const plugins = ordered.filter(
-    (entry) => !["core", "guide", "examples"].includes(entry.kind));
+    (entry) => !["core", "guide"].includes(entry.kind));
 
   return {
     generatedAt: generatedAt || null,
     core,
     plugins,
     guide: ordered.find((entry) => entry.kind === "guide") || null,
-    examples: ordered.find((entry) => entry.kind === "examples") || null,
     warnings,
   };
 }

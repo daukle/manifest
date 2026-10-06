@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T13:31:07.553Z",
+  "generatedAt": "2026-10-06T13:54:52.488Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -48,7 +48,7 @@
       "tag": "0.3.0",
       "publishedAt": "2026-10-05T10:12:35Z"
     },
-    "tip": "a4fd2b5377e02fda1d108f398812434a6ca81eed"
+    "tip": "9cf18779c8a84a71bcaa4fc36e0414b99d8d9c5e"
   },
   "plugins": [
     {
@@ -430,61 +430,7 @@
     "wikiPages": [],
     "examples": [],
     "release": null,
-    "tip": "2754739fae50ab1b4cea53bb7b44a1b35f055a5a"
-  },
-  "examples": {
-    "id": "examples",
-    "repo": "daukle/examples",
-    "kind": "examples",
-    "defaultBranch": "main",
-    "wikiPages": [
-      "index.md"
-    ],
-    "examples": [
-      {
-        "name": "lua-logic",
-        "files": [
-          "ABOUT.md",
-          "daukle.lua",
-          "daukle.toml",
-          "expected/package.json",
-          "package.json",
-          "producer/daukle.toml"
-        ]
-      },
-      {
-        "name": "npm-dependency-writer",
-        "files": [
-          "ABOUT.md",
-          "daukle.toml",
-          "expected/package.json",
-          "package.json",
-          "producer/daukle.toml"
-        ]
-      },
-      {
-        "name": "npm-github-source",
-        "files": [
-          "ABOUT.md",
-          "daukle.toml",
-          "expected/package.json",
-          "package.json"
-        ]
-      },
-      {
-        "name": "wrapper-bootstrap",
-        "files": [
-          ".daukle/wrapper.toml",
-          "ABOUT.md",
-          "daukle",
-          "daukle.ps1",
-          "daukle.toml",
-          "expect-version.txt"
-        ]
-      }
-    ],
-    "release": null,
-    "tip": "a9809c74500917b3f583413292e04ca75f42affa"
+    "tip": "0cb64d257bd2436f1bafd442c3035833097c844f"
   },
   "warnings": []
 }
