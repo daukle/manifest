@@ -63,6 +63,24 @@ export function makeClient({ token, fetchImpl = fetch } = {}) {
       return entries.filter((entry) => entry.type === "dir").map((entry) => entry.name);
     },
 
+    /**
+     * Every file path in one repository, in a single call.
+     *
+     * @implNote the contents API costs one request per directory, so listing
+     * twelve examples and their subdirectories is roughly forty; this is one per
+     * repository. `truncated` is the API saying it gave up on a large tree, and a
+     * truncated tree silently loses files, so the caller falls back rather than
+     * publishing a short list.
+     */
+    async treeOf(repo, ref) {
+      const tree = await json(`/repos/${repo}/git/trees/${ref}?recursive=1`);
+      if (!tree || !Array.isArray(tree.tree)) return { paths: [], truncated: true };
+      return {
+        paths: tree.tree.filter((entry) => entry.type === "blob").map((entry) => entry.path),
+        truncated: Boolean(tree.truncated),
+      };
+    },
+
     async latestRelease(repo) {
       const release = await json(`/repos/${repo}/releases/latest`);
       return release ? { tag: release.tag_name, publishedAt: release.published_at } : null;

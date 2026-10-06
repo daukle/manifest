@@ -7,29 +7,52 @@ import { buildManifest } from "./manifest.mjs";
 const ORG = "daukle";
 
 /**
- * Where a repository keeps its examples.
+ * Every example of one repository, with the files beneath it.
  *
  * @implNote everywhere in the org an example sits under `examples/` and the
- * harness under `test/`. In `daukle/examples` the repository IS the examples,
- * so they sit at the ROOT and `test/` is their sibling. That one inconsistency
- * is real and documented in that repository, and it has to be read rather than
+ * harness under `test/`. In `daukle/examples` the repository IS the examples, so
+ * they sit at the ROOT and `test/` is their sibling. That one inconsistency is
+ * real and documented in that repository, and it has to be read rather than
  * assumed away: listing `examples/` there finds nothing and would report the
  * repository that holds every cross-plugin example as holding none.
+ *
+ * @implNote an example is a directory carrying an ABOUT.md, which is the
+ * definition the README generator already uses. An exclusion list was tried
+ * first and was wrong within the hour: it named `test` and then `wiki/` was
+ * added and appeared as an example.
  */
-async function examplesOf(client, repo, name, ref) {
-  if (name !== "examples") return client.listDirectory(repo, "examples", ref);
+export function examplesFromTree(name, paths) {
+  const prefix = name === "examples" ? "" : "examples/";
+  const byExample = new Map();
+  for (const path of paths) {
+    if (!path.startsWith(prefix)) continue;
+    const rest = path.slice(prefix.length);
+    const slash = rest.indexOf("/");
+    if (slash <= 0) continue;
+    const example = rest.slice(0, slash);
+    if (example.startsWith(".")) continue;
+    if (!byExample.has(example)) byExample.set(example, []);
+    byExample.get(example).push(rest.slice(slash + 1));
+  }
+  return [...byExample.entries()]
+    .filter(([, files]) => files.includes("ABOUT.md"))
+    .map(([example, files]) => ({ name: example, files: files.sort() }))
+    .sort((left, right) => left.name.localeCompare(right.name));
+}
 
-  // An example is a directory carrying an ABOUT.md, which is the definition the
-  // README generator already uses. An exclusion list was tried first and was
-  // wrong within the hour: it named `test` and then `wiki/` was added and
-  // appeared as an example. That repository's own notes warn that its harness
-  // is skipped "by accident rather than by rule", and this is the same accident
-  // one layer out.
-  const roots = await client.listDirectory(repo, "", ref);
+async function examplesOf(client, repo, name, ref, tree) {
+  if (!tree.truncated) return examplesFromTree(name, tree.paths);
+
+  // A truncated tree has lost paths without saying which, so fall back to the
+  // per-directory listing rather than publish an example missing files.
+  const roots = name === "examples"
+    ? await client.listDirectory(repo, "", ref)
+    : await client.listDirectory(repo, "examples", ref);
   const found = [];
   for (const entry of roots) {
     if (entry.startsWith(".")) continue;
-    if (await client.getFile(repo, `${entry}/ABOUT.md`, ref)) found.push(entry);
+    const under = name === "examples" ? entry : `examples/${entry}`;
+    if (await client.getFile(repo, `${under}/ABOUT.md`, ref)) found.push({ name: entry, files: [] });
   }
   return found;
 }
@@ -49,10 +72,11 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     // none. Recording the names here is what keeps the site's build off the
     // API entirely.
     const wikiPages = await client.listFiles(repo, "wiki", defaultBranch, ".md");
+    const tree = await client.treeOf(repo, defaultBranch);
     files[repo] = {
       pluginLua,
       wikiPages,
-      examples: await examplesOf(client, repo, name, defaultBranch),
+      examples: await examplesOf(client, repo, name, defaultBranch, tree),
       release: await client.latestRelease(repo),
     };
   }
