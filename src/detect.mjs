@@ -78,6 +78,7 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
       wikiPages,
       examples: await examplesOf(client, repo, name, defaultBranch, tree),
       release: await client.latestRelease(repo),
+      tip: await client.tipOf(repo, defaultBranch),
     };
   }
 
