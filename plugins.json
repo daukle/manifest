@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T13:13:49.670Z",
+  "generatedAt": "2026-10-06T13:31:07.553Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -47,7 +47,8 @@
     "release": {
       "tag": "0.3.0",
       "publishedAt": "2026-10-05T10:12:35Z"
-    }
+    },
+    "tip": "a4fd2b5377e02fda1d108f398812434a6ca81eed"
   },
   "plugins": [
     {
@@ -75,6 +76,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-03T09:38:51Z"
       },
+      "tip": "8d36983020181a68b2e9a3d9c1c591210046ba4d",
       "declares": [
         "toolchain"
       ],
@@ -119,6 +121,7 @@
         "tag": "1.2.0",
         "publishedAt": "2026-10-05T10:09:15Z"
       },
+      "tip": "be6f9ef7f914acd5f0ade291c1e26f79814fc183",
       "declares": [
         "toolchain"
       ],
@@ -157,6 +160,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-03T21:25:18Z"
       },
+      "tip": "c550da5934f8d6f571000487f6e0cec56a206981",
       "declares": [
         "toolchain"
       ],
@@ -182,6 +186,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-05T10:04:45Z"
       },
+      "tip": "039487c22963eb8d3bb47b8ba747e7ca7be1472c",
       "declares": [
         "toolchain"
       ],
@@ -222,6 +227,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-01T18:55:00Z"
       },
+      "tip": "c30c578819128e1256c9ffd3a7f45d16d940b9b7",
       "declares": [
         "language"
       ],
@@ -254,9 +260,10 @@
         }
       ],
       "release": {
-        "tag": "greeter-2.0.0",
-        "publishedAt": "2026-10-06T13:02:42Z"
+        "tag": "1.0.0",
+        "publishedAt": "2026-10-03T21:25:32Z"
       },
+      "tip": "921c17e5843f0ba87886cf790260ea6c1068b80d",
       "declares": [
         "source"
       ],
@@ -282,6 +289,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-01T18:55:03Z"
       },
+      "tip": "639d1e1f3e952e965bdc3520c08affe1a0644158",
       "declares": [
         "source"
       ],
@@ -305,6 +313,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-02T11:00:49Z"
       },
+      "tip": "8f183d6057920420e898af3ed77b0da1457a35f3",
       "declares": [],
       "uses": [],
       "exports": [
@@ -344,6 +353,7 @@
         "tag": "1.1.0",
         "publishedAt": "2026-10-03T21:25:00Z"
       },
+      "tip": "47d20df691ef0cbc662561674d30df52808c8e34",
       "declares": [
         "toolchain"
       ],
@@ -388,6 +398,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-05T10:09:20Z"
       },
+      "tip": "97b37b0895d467db9d19464a3f021465a586b44a",
       "declares": [
         "toolchain"
       ],
@@ -418,7 +429,8 @@
     "defaultBranch": "main",
     "wikiPages": [],
     "examples": [],
-    "release": null
+    "release": null,
+    "tip": "2754739fae50ab1b4cea53bb7b44a1b35f055a5a"
   },
   "examples": {
     "id": "examples",
@@ -471,10 +483,8 @@
         ]
       }
     ],
-    "release": {
-      "tag": "greeter-2.0.0",
-      "publishedAt": "2026-10-02T12:29:58Z"
-    }
+    "release": null,
+    "tip": "a9809c74500917b3f583413292e04ca75f42affa"
   },
   "warnings": []
 }

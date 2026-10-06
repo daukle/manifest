@@ -121,6 +121,7 @@ export function classify(repos, files) {
       wikiPages: found.wikiPages || [],
       examples: found.examples || [],
       release: found.release || null,
+      tip: found.tip || null,
     };
 
     if (fixed) {

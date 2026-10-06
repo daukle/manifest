@@ -72,6 +72,14 @@ export function makeClient({ token, fetchImpl = fetch } = {}) {
      * truncated tree silently loses files, so the caller falls back rather than
      * publishing a short list.
      */
+    // The commit a branch points at. The site's freshness report compares it
+    // against the commit a resolver url pins, which is the one acquisition shape
+    // in this org that can silently fall behind without any version changing.
+    async tipOf(repo, ref) {
+      const branch = await json(`/repos/${repo}/git/ref/heads/${ref}`);
+      return branch && branch.object ? branch.object.sha : null;
+    },
+
     async treeOf(repo, ref) {
       const tree = await json(`/repos/${repo}/git/trees/${ref}?recursive=1`);
       if (!tree || !Array.isArray(tree.tree)) return { paths: [], truncated: true };
@@ -81,9 +89,23 @@ export function makeClient({ token, fetchImpl = fetch } = {}) {
       };
     },
 
+    /**
+     * The newest release of the repository's OWN artifact.
+     *
+     * @implNote `/releases/latest` is the newest release of anything, and a
+     * repository may publish more than one thing: `daukle/github` releases the
+     * plugin as `1.0.0` and the producer manifest its example fetches as
+     * `greeter-2.0.0`, and the plain endpoint reported the producer as the
+     * plugin's version the hour that second release existed. A plain version tag
+     * is the repository's own; a prefixed one belongs to something it hosts.
+     */
     async latestRelease(repo) {
-      const release = await json(`/repos/${repo}/releases/latest`);
-      return release ? { tag: release.tag_name, publishedAt: release.published_at } : null;
+      const releases = await json(`/repos/${repo}/releases?per_page=100`);
+      if (!Array.isArray(releases)) return null;
+      const own = releases.filter((release) => /^\d+\.\d+\.\d+$/.test(release.tag_name));
+      if (own.length === 0) return null;
+      own.sort((left, right) => right.published_at.localeCompare(left.published_at));
+      return { tag: own[0].tag_name, publishedAt: own[0].published_at };
     },
   };
 }
