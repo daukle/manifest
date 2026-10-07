@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T11:30:53.252Z",
+  "generatedAt": "2026-10-07T15:24:34.087Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -45,10 +45,10 @@
       }
     ],
     "release": {
-      "tag": "0.5.0",
-      "publishedAt": "2026-10-06T22:42:52Z"
+      "tag": "0.6.0",
+      "publishedAt": "2026-10-07T15:06:30Z"
     },
-    "tip": "c4e2b3ef1db40ccf02803b322466c33653e392b4"
+    "tip": "8316dd427eb450de9d3570f980dc5d9af43985c2"
   },
   "plugins": [
     {
@@ -396,13 +396,22 @@
             "needs-tools",
             "src/main/java/com/example/Main.java"
           ]
+        },
+        {
+          "name": "gradle-third-party-plugin",
+          "files": [
+            "ABOUT.md",
+            "daukle.toml",
+            "needs-tools",
+            "src/main/java/com/example/Main.java"
+          ]
         }
       ],
       "release": {
-        "tag": "1.1.0",
-        "publishedAt": "2026-10-06T19:03:20Z"
+        "tag": "1.2.0",
+        "publishedAt": "2026-10-07T14:41:13Z"
       },
-      "tip": "cf02d82e373242b3f192359da9d99947615007f8",
+      "tip": "b0540bc906752b81cc23ebc3eb1ab19afab7d77c",
       "declares": [
         "toolchain"
       ],
@@ -410,12 +419,15 @@
         "provision",
         "artifact",
         "exec",
-        "write"
+        "write",
+        "read",
+        "parse"
       ],
       "exports": [
         "lib/distributions",
         "lib/build_file",
-        "lib/junit"
+        "lib/junit",
+        "lib/discovery"
       ],
       "requires": [
         {
