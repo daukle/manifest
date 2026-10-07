@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T13:54:52.488Z",
+  "generatedAt": "2026-10-07T11:30:53.252Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -45,10 +45,10 @@
       }
     ],
     "release": {
-      "tag": "0.3.0",
-      "publishedAt": "2026-10-05T10:12:35Z"
+      "tag": "0.5.0",
+      "publishedAt": "2026-10-06T22:42:52Z"
     },
-    "tip": "9cf18779c8a84a71bcaa4fc36e0414b99d8d9c5e"
+    "tip": "c4e2b3ef1db40ccf02803b322466c33653e392b4"
   },
   "plugins": [
     {
@@ -76,7 +76,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-03T09:38:51Z"
       },
-      "tip": "8d36983020181a68b2e9a3d9c1c591210046ba4d",
+      "tip": "dacdf63214fdb600231a2130717622876d098c9b",
       "declares": [
         "toolchain"
       ],
@@ -118,10 +118,10 @@
         }
       ],
       "release": {
-        "tag": "1.2.0",
-        "publishedAt": "2026-10-05T10:09:15Z"
+        "tag": "1.3.0",
+        "publishedAt": "2026-10-07T08:43:48Z"
       },
-      "tip": "be6f9ef7f914acd5f0ade291c1e26f79814fc183",
+      "tip": "bd615453fedbb538190bfd7233c69c96572c1382",
       "declares": [
         "toolchain"
       ],
@@ -157,16 +157,18 @@
         }
       ],
       "release": {
-        "tag": "1.0.0",
-        "publishedAt": "2026-10-03T21:25:18Z"
+        "tag": "1.1.0",
+        "publishedAt": "2026-10-07T11:28:22Z"
       },
-      "tip": "c550da5934f8d6f571000487f6e0cec56a206981",
+      "tip": "5434f823604e2ac294387ead9ef347a2e1fa790f",
       "declares": [
         "toolchain"
       ],
       "uses": [
         "provision",
-        "exec"
+        "exec",
+        "read",
+        "parse"
       ],
       "exports": [
         "lib/runtimes"
@@ -183,10 +185,10 @@
       ],
       "examples": [],
       "release": {
-        "tag": "1.0.0",
-        "publishedAt": "2026-10-05T10:04:45Z"
+        "tag": "1.1.0",
+        "publishedAt": "2026-10-06T21:41:13Z"
       },
-      "tip": "039487c22963eb8d3bb47b8ba747e7ca7be1472c",
+      "tip": "753d5e50ccfca5fbf61780b43243f276846b7eda",
       "declares": [
         "toolchain"
       ],
@@ -313,7 +315,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-02T11:00:49Z"
       },
-      "tip": "8f183d6057920420e898af3ed77b0da1457a35f3",
+      "tip": "9c0349a82d52c90acd8c0305f50539439745fa65",
       "declares": [],
       "uses": [],
       "exports": [
@@ -350,16 +352,18 @@
         }
       ],
       "release": {
-        "tag": "1.1.0",
-        "publishedAt": "2026-10-03T21:25:00Z"
+        "tag": "1.4.1",
+        "publishedAt": "2026-10-07T10:51:00Z"
       },
-      "tip": "47d20df691ef0cbc662561674d30df52808c8e34",
+      "tip": "cd51ba431e113896c817fda66e33b10d0f6ff1fe",
       "declares": [
         "toolchain"
       ],
       "uses": [
         "provision",
-        "exec"
+        "exec",
+        "read",
+        "parse"
       ],
       "exports": [],
       "requires": [
@@ -395,10 +399,10 @@
         }
       ],
       "release": {
-        "tag": "1.0.0",
-        "publishedAt": "2026-10-05T10:09:20Z"
+        "tag": "1.1.0",
+        "publishedAt": "2026-10-06T19:03:20Z"
       },
-      "tip": "97b37b0895d467db9d19464a3f021465a586b44a",
+      "tip": "cf02d82e373242b3f192359da9d99947615007f8",
       "declares": [
         "toolchain"
       ],
@@ -430,7 +434,7 @@
     "wikiPages": [],
     "examples": [],
     "release": null,
-    "tip": "0cb64d257bd2436f1bafd442c3035833097c844f"
+    "tip": "33f4672999a23b93b84e6572cee9c6f1c404f9e6"
   },
   "warnings": []
 }
