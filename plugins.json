@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T08:51:59.432Z",
+  "generatedAt": "2026-10-12T12:17:07.886Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -48,7 +48,7 @@
       "tag": "0.6.0",
       "publishedAt": "2026-10-07T15:06:30Z"
     },
-    "tip": "8316dd427eb450de9d3570f980dc5d9af43985c2"
+    "tip": "571b0de42196c68190e625be7f0a58e4c1982fc2"
   },
   "plugins": [
     {
@@ -60,6 +60,17 @@
         "index.md"
       ],
       "examples": [
+        {
+          "name": "c-gcc-executable",
+          "files": [
+            "ABOUT.md",
+            "daukle.toml",
+            "include/greet.h",
+            "needs-tools",
+            "src/greet.c",
+            "src/main.c"
+          ]
+        },
         {
           "name": "c-hello-executable",
           "files": [
@@ -76,7 +87,7 @@
         "tag": "1.1.0",
         "publishedAt": "2026-10-12T08:48:56Z"
       },
-      "tip": "50fd7dd62d8eb0c2ae66028312c62d8d9465fc30",
+      "tip": "2775bef6f94cc3f4f303ffd62bb6a97197bad396",
       "declares": [
         "toolchain"
       ],
