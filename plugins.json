@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T10:07:03.542Z",
+  "generatedAt": "2026-10-13T11:27:12.956Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -454,10 +454,10 @@
         }
       ],
       "release": {
-        "tag": "1.4.2",
-        "publishedAt": "2026-10-13T10:02:40Z"
+        "tag": "1.5.0",
+        "publishedAt": "2026-10-13T11:26:06Z"
       },
-      "tip": "acb2b824f32141773ee57ff9f218caef5083bde7",
+      "tip": "e940af89197daf88bb5bf66f8ee6a6cbb8d47ce5",
       "declares": [
         "toolchain"
       ],
