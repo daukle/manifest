@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T16:01:43.086Z",
+  "generatedAt": "2026-10-13T21:14:02.485Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -48,7 +48,7 @@
       "tag": "0.7.1",
       "publishedAt": "2026-10-13T07:23:17Z"
     },
-    "tip": "7af6972740e01058d0834666415355f2aa79553a"
+    "tip": "15c131b0af7dfbad2cff58896e3749421468294c"
   },
   "plugins": [
     {
@@ -143,7 +143,7 @@
         "tag": "1.4.0",
         "publishedAt": "2026-10-13T06:27:40Z"
       },
-      "tip": "8f9be38da039686cdb794ec71660666d10f8b359",
+      "tip": "742e0c6c0af09bdedd5fb89a871db29640bb6cae",
       "declares": [
         "toolchain"
       ],
@@ -185,7 +185,7 @@
         "tag": "1.1.0",
         "publishedAt": "2026-10-07T11:28:22Z"
       },
-      "tip": "5434f823604e2ac294387ead9ef347a2e1fa790f",
+      "tip": "aac21160f05f5db7fb34476c0be0afd0ba0befab",
       "declares": [
         "toolchain"
       ],
@@ -213,7 +213,7 @@
         "tag": "1.1.0",
         "publishedAt": "2026-10-06T21:41:13Z"
       },
-      "tip": "753d5e50ccfca5fbf61780b43243f276846b7eda",
+      "tip": "852919bea0fca6b6c36b81a78281a1aa1090c86a",
       "declares": [
         "toolchain"
       ],
@@ -405,7 +405,7 @@
         "tag": "1.4.1",
         "publishedAt": "2026-10-07T10:51:00Z"
       },
-      "tip": "cd51ba431e113896c817fda66e33b10d0f6ff1fe",
+      "tip": "18e4b3122b1eb1180b5e4b0cce57d0e4b152ee65",
       "declares": [
         "toolchain"
       ],
@@ -469,6 +469,18 @@
           ]
         },
         {
+          "name": "gradle-nested-modules",
+          "files": [
+            "ABOUT.md",
+            "core/src/main/java/com/example/core/Core.java",
+            "daukle.toml",
+            "interop/core/src/main/java/com/example/interop/Interop.java",
+            "needs-tools",
+            "tools/core/src/main/java/com/example/tools/Tools.java",
+            "tools/maven/plugin/src/main/java/com/example/plugin/App.java"
+          ]
+        },
+        {
           "name": "gradle-third-party-plugin",
           "files": [
             "ABOUT.md",
@@ -479,10 +491,10 @@
         }
       ],
       "release": {
-        "tag": "1.6.0",
-        "publishedAt": "2026-10-13T16:00:09Z"
+        "tag": "1.7.0",
+        "publishedAt": "2026-10-13T21:03:22Z"
       },
-      "tip": "3db09b9e08060b279fd2116843352f1c27ed71bb",
+      "tip": "549eb763b99e4205d996d6f3aa97eefeaee8e0d7",
       "declares": [
         "toolchain"
       ],
