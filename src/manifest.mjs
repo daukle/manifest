@@ -1,7 +1,15 @@
 // Turning the classified rows into the document consumers read.
 
-const ORDER = ["core", "toolchain", "resolver", "language", "source", "library", "guide"];
+const ORDER = ["core", "toolchain", "resolver", "language", "source", "publisher", "library",
+               "guide"];
 
+/**
+ * @implNote a kind this list does not name sorts BEFORE core, because indexOf
+ * answers -1, and nothing says so. `publisher` was missing here while
+ * classify.mjs already returned it, so the first publisher plugin in the org
+ * would have been listed ahead of core on the public site. Measured by running
+ * topological over a synthetic publisher row, not by reading this line.
+ */
 function byKindThenId(left, right) {
   const difference = ORDER.indexOf(left.kind) - ORDER.indexOf(right.kind);
   return difference !== 0 ? difference : left.id.localeCompare(right.id);
