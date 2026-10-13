@@ -1,0 +1,45 @@
+name: Regenerate
+
+# plugins.json describes the org as the forge reports it, so it goes stale on its own: a release in
+# any plugin repository changes what this file should say and nothing here notices. The release
+# procedure regenerates it by hand, which has worked every time somebody remembered; this is the net
+# under that, not a replacement for it.
+#
+# Before daukle/guide's 05:17 pages build, so a regeneration is on main in time for the site that
+# reads it.
+
+on:
+  schedule:
+    - cron: '41 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    uses: intisy/workflows/.github/workflows/regenerate.yml@main
+    with:
+      branch: development
+      command: npm run generate
+      paths: plugins.json
+      # Every run rewrites generatedAt, so without this a nightly job would commit, merge and start
+      # CI every night whether the org changed or not.
+      skip_if_only: generatedAt
+    secrets:
+      envPAT: ${{ secrets.PAT }}
+
+  promote:
+    needs: regenerate
+    if: needs.regenerate.outputs.committed == 'true'
+    uses: intisy/workflows/.github/workflows/merge.yml@main
+    with:
+      source: development
+      target: main
+      # README.md and NOT plugins.json. generated_paths names what is held to the branch being
+      # merged INTO, so main's generated README survives a merge from a development branch that
+      # does not track one. Naming plugins.json here would restore main's old copy and throw the
+      # regeneration away, which is the opposite of this workflow.
+      generated_paths: README.md
+    secrets:
+      envPAT: ${{ secrets.PAT }}
