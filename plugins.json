@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:44:07.504Z",
+  "generatedAt": "2026-10-14T11:41:24.711Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -45,10 +45,10 @@
       }
     ],
     "release": {
-      "tag": "0.7.1",
-      "publishedAt": "2026-10-13T07:23:17Z"
+      "tag": "0.7.2",
+      "publishedAt": "2026-10-14T11:27:47Z"
     },
-    "tip": "15c131b0af7dfbad2cff58896e3749421468294c"
+    "tip": "7c8018057f37d53001dee97015bdecd0dd3b1909"
   },
   "plugins": [
     {
@@ -463,7 +463,9 @@
           "files": [
             "ABOUT.md",
             "build-logic/src/main/java/com/example/logic/HelloPlugin.java",
+            "daukle.lua",
             "daukle.toml",
+            "daukle/maven/classpath.lua",
             "needs-tools"
           ]
         },
@@ -500,10 +502,10 @@
         }
       ],
       "release": {
-        "tag": "1.9.0",
-        "publishedAt": "2026-10-14T08:22:44Z"
+        "tag": "1.10.0",
+        "publishedAt": "2026-10-14T11:26:25Z"
       },
-      "tip": "a8c9aca41c1c93425d88a8943575d67a0c3498ab",
+      "tip": "434b027f472b2f73c7b738da27b6a75e5e487190",
       "declares": [
         "toolchain"
       ],
