@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T08:27:36.384Z",
+  "generatedAt": "2026-10-14T09:44:07.504Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -210,10 +210,10 @@
       ],
       "examples": [],
       "release": {
-        "tag": "1.1.0",
-        "publishedAt": "2026-10-06T21:41:13Z"
+        "tag": "1.2.0",
+        "publishedAt": "2026-10-14T09:42:59Z"
       },
-      "tip": "852919bea0fca6b6c36b81a78281a1aa1090c86a",
+      "tip": "dd8627cc9cb8a56cb0afe2948ebbf96846733748",
       "declares": [
         "toolchain"
       ],
@@ -459,6 +459,15 @@
           ]
         },
         {
+          "name": "gradle-included-build",
+          "files": [
+            "ABOUT.md",
+            "build-logic/src/main/java/com/example/logic/HelloPlugin.java",
+            "daukle.toml",
+            "needs-tools"
+          ]
+        },
+        {
           "name": "gradle-multi-project",
           "files": [
             "ABOUT.md",
@@ -494,7 +503,7 @@
         "tag": "1.9.0",
         "publishedAt": "2026-10-14T08:22:44Z"
       },
-      "tip": "05898d122a91b89790b8c64d2483f7f61b75af3a",
+      "tip": "a8c9aca41c1c93425d88a8943575d67a0c3498ab",
       "declares": [
         "toolchain"
       ],
