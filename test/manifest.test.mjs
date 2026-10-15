@@ -64,3 +64,12 @@ test("core and guide are lifted out of the plugin list", () => {
   assert.equal(built.guide.id, "guide");
   assert.deepEqual(built.plugins.map((e) => e.id), ["java"]);
 });
+
+test("two plugins replacing the same foreign plugin is a warning", () => {
+  const built = buildManifest([
+    entry("core", "core"),
+    { ...entry("github", "publisher"), replaces: { gradle: { plugins: ["x.release"] } } },
+    { ...entry("other", "publisher"), replaces: { gradle: { plugins: ["x.release"] } } },
+  ]);
+  assert.ok(built.warnings.some((w) => /x\.release.*github.*other|x\.release.*other.*github/.test(w)));
+});

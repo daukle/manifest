@@ -153,6 +153,8 @@ export function classify(repos, files) {
       examples: found.examples || [],
       release: found.release || null,
       tip: found.tip || null,
+      detect: found.catalog ? found.catalog.detect : [],
+      replaces: found.catalog ? found.catalog.replaces : {},
     };
 
     if (fixed) {

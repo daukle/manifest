@@ -3,6 +3,7 @@ import { pathToFileURL } from "node:url";
 import { makeClient } from "./github.mjs";
 import { classify, IGNORED, SUPERSEDED } from "./classify.mjs";
 import { buildManifest } from "./manifest.mjs";
+import { readCatalog } from "./catalog.mjs";
 
 const ORG = "daukle";
 
@@ -67,6 +68,7 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     (repo) => !IGNORED[repo.name] && !SUPERSEDED.test(repo.name) && !repo.private);
 
   const files = {};
+  const catalogWarnings = [];
   for (const { repo, name, defaultBranch } of repos) {
     // The default branch and not development: what a consumer resolves is what
     // is released, and the generated README already only exists there.
@@ -78,8 +80,13 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     // API entirely.
     const wikiPages = await client.listFiles(repo, "wiki", defaultBranch, ".md");
     const tree = await client.treeOf(repo, defaultBranch);
+    const catalogText = tree.paths.includes("catalog.json")
+      ? await client.getFile(repo, "catalog.json", defaultBranch) : null;
+    const catalog = catalogText === null ? null : readCatalog(catalogText, repo);
+    if (catalog) catalogWarnings.push(...catalog.warnings);
     files[repo] = {
       pluginLua,
+      catalog,
       moduleSources: await moduleSourcesOf(client, repo, defaultBranch, tree),
       wikiPages,
       examples: await examplesOf(client, repo, defaultBranch, tree),
@@ -89,6 +96,7 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
   }
 
   const manifest = buildManifest(classify(repos, files), { generatedAt });
+  manifest.warnings.push(...catalogWarnings);
 
   // A detector that answers with an empty org has failed in a way that looks
   // exactly like an org with nothing in it, and the consumers would publish a

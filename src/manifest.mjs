@@ -70,6 +70,22 @@ export function buildManifest(entries, { generatedAt } = {}) {
     }
   }
 
+  const claimed = new Map();
+  for (const entry of ordered) {
+    for (const [tool, kinds] of Object.entries(entry.replaces || {})) {
+      for (const names of Object.values(kinds)) {
+        for (const name of names) {
+          const key = `${tool}:${name}`;
+          if (claimed.has(key)) {
+            warnings.push(`${name} (${tool}) is replaced by both ${claimed.get(key)} and ${entry.id}`);
+          } else {
+            claimed.set(key, entry.id);
+          }
+        }
+      }
+    }
+  }
+
   const core = ordered.find((entry) => entry.kind === "core") || null;
   const plugins = ordered.filter(
     (entry) => !["core", "guide"].includes(entry.kind));
