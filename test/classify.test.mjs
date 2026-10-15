@@ -171,3 +171,9 @@ test("a plugin with no catalog still carries both fields, empty", () => {
   assert.deepEqual(entry.detect, []);
   assert.deepEqual(entry.replaces, {});
 });
+
+test("a plugin with no release carries a null asset, not a url to a missing tag", () => {
+  const repos = [{ repo: "daukle/new", name: "new", defaultBranch: "main", archived: false }];
+  const files = { "daukle/new": { pluginLua: 'daukle.plugin{ api = 1 }\n', release: null } };
+  assert.equal(classify(repos, files)[0].asset, null);
+});

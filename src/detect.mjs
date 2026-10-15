@@ -84,13 +84,22 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
       ? await client.getFile(repo, "catalog.json", defaultBranch) : null;
     const catalog = catalogText === null ? null : readCatalog(catalogText, repo);
     if (catalog) catalogWarnings.push(...catalog.warnings);
+    const release = await client.latestRelease(repo);
+    // Only a repository carrying plugin.lua publishes one; core and the guide
+    // release other assets and would otherwise each raise a false warning.
+    const assetSha = release && pluginLua
+      ? await client.assetDigest(repo, release.tag, "plugin.lua") : null;
+    if (release && pluginLua && assetSha === null) {
+      catalogWarnings.push(`${repo}: release ${release.tag} has no plugin.lua asset to pin`);
+    }
     files[repo] = {
       pluginLua,
       catalog,
       moduleSources: await moduleSourcesOf(client, repo, defaultBranch, tree),
       wikiPages,
       examples: await examplesOf(client, repo, defaultBranch, tree),
-      release: await client.latestRelease(repo),
+      release,
+      assetSha,
       tip: await client.tipOf(repo, defaultBranch),
     };
   }
