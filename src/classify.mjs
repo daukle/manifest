@@ -91,12 +91,30 @@ export function kindOf({ declares, uses }) {
   return "library";
 }
 
+/**
+ * Every kind a chunk declares, in kindOf's order, so kinds[0] is always kind.
+ * One chunk may hold a source beside a publisher since daukle 0.8.0, which is
+ * what daukle/github does.
+ */
+export function kindsOf({ declares, uses }) {
+  const kinds = [];
+  if (declares.includes("toolchain")) kinds.push(kindOf({ declares: ["toolchain"], uses }));
+  for (const kind of ["language", "source", "publisher"]) {
+    if (declares.includes(kind)) kinds.push(kind);
+  }
+  return kinds.length > 0 ? kinds : ["library"];
+}
+
 export function readPlugin(text) {
   const declares = DECLARATIONS.filter(([, pattern]) => pattern.test(text)).map(([name]) => name);
   const uses = listField(text, "uses");
   const exports = listField(text, "exports");
   const requires = requiresField(text);
-  return { declares, uses, exports, requires, kind: kindOf({ declares, uses }) };
+  return {
+    declares, uses, exports, requires,
+    kind: kindOf({ declares, uses }),
+    kinds: kindsOf({ declares, uses }),
+  };
 }
 
 /**
@@ -109,6 +127,8 @@ export function classify(repos, files) {
     const reason = IGNORED[repo.name];
     if (reason) continue;
     if (SUPERSEDED.test(repo.name)) continue;
+    // Archived is how a merged repository retires while its releases stay downloadable.
+    if (repo.archived) continue;
 
     const found = files[repo.repo] || {};
     const fixed = FIXED[repo.name];

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readPlugin, kindOf, classify, SUPERSEDED } from "../src/classify.mjs";
+import { readPlugin, kindOf, kindsOf, classify, SUPERSEDED } from "../src/classify.mjs";
 
 const MAVEN = `
 daukle.plugin{ api = 1, uses = { "fetch", "cache", "pin", "write" },
@@ -99,4 +99,35 @@ test("classify skips ignored, superseded and plugin-less repos", () => {
   assert.equal(out.find((entry) => entry.id === "guide").kind, "guide");
   assert.deepEqual(out.find((entry) => entry.id === "maven").wikiPages, ["index.md"]);
   assert.deepEqual(out.find((entry) => entry.id === "maven").examples, ["a"]);
+});
+
+const GITHUB = `
+daukle.plugin{ api = 2, uses = { "fetch", "cache", "env", "parse", "exec", "provision" } }
+daukle.source{ name = "github-releases" }
+daukle.publisher{ name = "github-release" }
+`;
+
+test("a chunk declaring two capabilities lists both, and kind stays the first", () => {
+  const plugin = readPlugin(GITHUB);
+  assert.equal(plugin.kind, "source");
+  assert.deepEqual(plugin.kinds, ["source", "publisher"]);
+});
+
+test("a single-kind plugin has exactly its one kind in kinds", () => {
+  assert.deepEqual(readPlugin(MAVEN).kinds, ["resolver"]);
+  assert.deepEqual(readPlugin(NPM).kinds, ["language"]);
+  assert.deepEqual(readPlugin(LIFECYCLE).kinds, ["library"]);
+  assert.deepEqual(kindsOf({ declares: ["toolchain"], uses: ["exec"] }), ["toolchain"]);
+});
+
+test("classify skips an archived repository", () => {
+  const repos = [
+    { repo: "daukle/maven", name: "maven", defaultBranch: "main" },
+    { repo: "daukle/github-release", name: "github-release", defaultBranch: "main", archived: true },
+  ];
+  const files = {
+    "daukle/maven": { pluginLua: MAVEN },
+    "daukle/github-release": { pluginLua: GITHUB },
+  };
+  assert.deepEqual(classify(repos, files).map((entry) => entry.id), ["maven"]);
 });
