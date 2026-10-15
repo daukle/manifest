@@ -118,6 +118,18 @@ export function readPlugin(text) {
 }
 
 /**
+ * A plugin's modules, each read from its own chunk: a module carries its own
+ * grant (daukle 0.9.0, D-134), so its kinds and uses are its own and not the
+ * main chunk's.
+ */
+function modulesOf(moduleSources = {}) {
+  return Object.keys(moduleSources).sort().map((name) => {
+    const { kind, kinds, uses } = readPlugin(moduleSources[name]);
+    return { name, kind, kinds, uses };
+  });
+}
+
+/**
  * @param repos  [{ repo, name, defaultBranch, archived }]
  * @param files  { [repo]: { pluginLua, hasWiki, hasExamples, release } }
  */
@@ -149,7 +161,7 @@ export function classify(repos, files) {
     }
     if (!found.pluginLua) continue;
     const plugin = readPlugin(found.pluginLua);
-    out.push({ ...entry, ...plugin });
+    out.push({ ...entry, ...plugin, modules: modulesOf(found.moduleSources) });
   }
   return out;
 }
