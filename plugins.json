@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T16:31:56.165Z",
+  "generatedAt": "2026-10-15T16:51:27.781Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -48,7 +48,7 @@
       "tag": "0.8.1",
       "publishedAt": "2026-10-15T16:28:36Z"
     },
-    "tip": "fbe8b57a7542894f75dca103f021e8a0d5e515dd"
+    "tip": "b7ed37f5ddef6cf794db584851e107f5d9dc9e37"
   },
   "plugins": [
     {
@@ -350,34 +350,6 @@
       "requires": [],
       "kinds": [
         "source"
-      ]
-    },
-    {
-      "id": "github-release",
-      "repo": "daukle/github-release",
-      "kind": "publisher",
-      "defaultBranch": "main",
-      "wikiPages": [
-        "index.md"
-      ],
-      "examples": [],
-      "release": {
-        "tag": "1.0.0",
-        "publishedAt": "2026-10-13T12:40:58Z"
-      },
-      "tip": "e702955aab469f5ba1fac073f58a2e685e501d33",
-      "declares": [
-        "publisher"
-      ],
-      "uses": [
-        "exec",
-        "provision",
-        "env"
-      ],
-      "exports": [],
-      "requires": [],
-      "kinds": [
-        "publisher"
       ]
     },
     {
