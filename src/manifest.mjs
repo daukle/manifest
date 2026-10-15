@@ -76,6 +76,7 @@ export function buildManifest(entries, { generatedAt } = {}) {
       for (const names of Object.values(kinds)) {
         for (const name of names) {
           const key = `${tool}:${name}`;
+          if (claimed.get(key) === entry.id) continue;
           if (claimed.has(key)) {
             warnings.push(`${name} (${tool}) is replaced by both ${claimed.get(key)} and ${entry.id}`);
           } else {
