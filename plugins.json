@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T16:51:27.781Z",
+  "generatedAt": "2026-10-15T19:14:43.916Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -45,10 +45,10 @@
       }
     ],
     "release": {
-      "tag": "0.8.1",
-      "publishedAt": "2026-10-15T16:28:36Z"
+      "tag": "0.9.0",
+      "publishedAt": "2026-10-15T18:51:03Z"
     },
-    "tip": "b7ed37f5ddef6cf794db584851e107f5d9dc9e37"
+    "tip": "9c18ce51ac08e8a70ecc2d3c58bbfe65ee91a9f3"
   },
   "plugins": [
     {
@@ -101,7 +101,8 @@
       "requires": [],
       "kinds": [
         "toolchain"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "java",
@@ -166,7 +167,8 @@
       "requires": [],
       "kinds": [
         "toolchain"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "node",
@@ -207,7 +209,8 @@
       "requires": [],
       "kinds": [
         "toolchain"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "maven",
@@ -240,7 +243,8 @@
       "requires": [],
       "kinds": [
         "resolver"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "npm",
@@ -278,7 +282,8 @@
       "requires": [],
       "kinds": [
         "language"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "github",
@@ -323,7 +328,8 @@
       "kinds": [
         "source",
         "publisher"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "path",
@@ -350,7 +356,8 @@
       "requires": [],
       "kinds": [
         "source"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "lifecycle",
@@ -374,7 +381,8 @@
       "requires": [],
       "kinds": [
         "library"
-      ]
+      ],
+      "modules": []
     },
     {
       "id": "cmake",
@@ -405,10 +413,10 @@
         }
       ],
       "release": {
-        "tag": "1.4.1",
-        "publishedAt": "2026-10-07T10:51:00Z"
+        "tag": "1.5.0",
+        "publishedAt": "2026-10-15T19:08:31Z"
       },
-      "tip": "18e4b3122b1eb1180b5e4b0cce57d0e4b152ee65",
+      "tip": "b0dfef98bfafb62d5ce314d2a9649476c1273e7e",
       "declares": [
         "toolchain"
       ],
@@ -433,6 +441,18 @@
       ],
       "kinds": [
         "toolchain"
+      ],
+      "modules": [
+        {
+          "name": "deps",
+          "kind": "language",
+          "kinds": [
+            "language"
+          ],
+          "uses": [
+            "region"
+          ]
+        }
       ]
     },
     {
@@ -539,7 +559,8 @@
       ],
       "kinds": [
         "toolchain"
-      ]
+      ],
+      "modules": []
     }
   ],
   "guide": {
@@ -550,7 +571,7 @@
     "wikiPages": [],
     "examples": [],
     "release": null,
-    "tip": "a9130347a3e8e67bd4726a8b79ad415b595dc35b"
+    "tip": "fa42fc91115a0414db95eae6ef3c2097a96a4482"
   },
   "warnings": []
 }
