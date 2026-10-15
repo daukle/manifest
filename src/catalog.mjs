@@ -16,7 +16,12 @@ export function hasBareHyphen(pattern) {
     const char = pattern[index];
     if (char === "%") { index += 1; continue; }
     if (inSet) { if (char === "]") inSet = false; continue; }
-    if (char === "[") { inSet = true; if (pattern[index + 1] === "]") index += 1; continue; }
+    if (char === "[") {
+      inSet = true;
+      if (pattern[index + 1] === "^") index += 1;
+      if (pattern[index + 1] === "]") index += 1;
+      continue;
+    }
     if (char === "-") return true;
   }
   return false;

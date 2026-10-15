@@ -75,3 +75,15 @@ for (const [name, text] of Object.entries(structurallyWrong)) {
     assert.match(read.warnings[0], /daukle\/w: catalog\.json/);
   });
 }
+
+test("a literal ] right after [ or [^ does not end the set early", () => {
+  const text = JSON.stringify({ detect: [{ files: ["a"], contains: ["[^]a-z]", "[]a-z]"] }] });
+  assert.deepEqual(readCatalog(text, "daukle/b").warnings, []);
+});
+
+test("a leading hyphen is refused, conservatively, rather than guessed at", () => {
+  const text = JSON.stringify({ detect: [{ files: ["a"], contains: ["-x"] }] });
+  const read = readCatalog(text, "daukle/h");
+  assert.deepEqual(read.detect, []);
+  assert.match(read.warnings[0], /daukle\/h.*"-x"/);
+});
