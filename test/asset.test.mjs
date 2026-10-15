@@ -22,3 +22,11 @@ test("a release with no such asset answers null, never a digest of something els
   const client = makeClient({ fetchImpl: fakeFetch });
   assert.equal(await client.assetDigest("daukle/github", "greeter-2.0.0", "plugin.lua"), null);
 });
+
+test("a transient error fails loudly instead of reading as a missing asset", async () => {
+  const unavailable = () => Promise.resolve(new Response("", { status: 503, statusText: "Service Unavailable" }));
+  const client = makeClient({ fetchImpl: unavailable });
+  await assert.rejects(
+    client.assetDigest("daukle/node", "1.1.0", "plugin.lua"),
+    /releases\/download\/1\.1\.0\/plugin\.lua.*503/);
+});

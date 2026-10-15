@@ -54,9 +54,12 @@ export function makeClient({ token, fetchImpl = fetch } = {}) {
     // Hashed from the bytes the release serves, never from a working tree:
     // core.autocrlf rewrites a checkout, and a digest of that stops matching.
     async assetDigest(repo, tag, name) {
-      const response = await fetchImpl(
-        `https://github.com/${repo}/releases/download/${tag}/${name}`, { headers });
-      if (!response.ok) return null;
+      const url = `https://github.com/${repo}/releases/download/${tag}/${name}`;
+      const response = await fetchImpl(url, { headers });
+      if (response.status === 404) return null;
+      if (!response.ok) {
+        throw new Error(`${url} answered ${response.status} ${response.statusText}`);
+      }
       const bytes = Buffer.from(await response.arrayBuffer());
       return createHash("sha256").update(bytes).digest("hex");
     },
