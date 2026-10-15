@@ -47,6 +47,21 @@ async function examplesOf(client, repo, ref, tree) {
   return found;
 }
 
+// Each modules/<name>.lua beside plugin.lua, by name. The tree is already in
+// hand; only a truncated one costs a contents call.
+async function moduleSourcesOf(client, repo, ref, tree) {
+  const names = tree.truncated
+    ? (await client.listFiles(repo, "modules", ref, ".lua")).map((file) => file.slice(0, -4))
+    : tree.paths.filter((path) => /^modules\/[^/]+\.lua$/.test(path))
+      .map((path) => path.slice("modules/".length, -4));
+  const sources = {};
+  for (const name of names) {
+    const text = await client.getFile(repo, `modules/${name}.lua`, ref);
+    if (text !== null) sources[name] = text;
+  }
+  return sources;
+}
+
 export async function runDetect({ org = ORG, client, generatedAt }) {
   const repos = (await client.listOrgRepos(org)).filter(
     (repo) => !IGNORED[repo.name] && !SUPERSEDED.test(repo.name) && !repo.private);
@@ -65,6 +80,7 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     const tree = await client.treeOf(repo, defaultBranch);
     files[repo] = {
       pluginLua,
+      moduleSources: await moduleSourcesOf(client, repo, defaultBranch, tree),
       wikiPages,
       examples: await examplesOf(client, repo, defaultBranch, tree),
       release: await client.latestRelease(repo),

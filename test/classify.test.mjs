@@ -131,3 +131,24 @@ test("classify skips an archived repository", () => {
   };
   assert.deepEqual(classify(repos, files).map((entry) => entry.id), ["maven"]);
 });
+
+test("a plugin's modules are listed with their own kinds and grant", () => {
+  const repos = [{ repo: "daukle/cmake", name: "cmake", defaultBranch: "main" }];
+  const files = {
+    "daukle/cmake": {
+      pluginLua: GRADLE,
+      moduleSources: { deps: NPM },
+    },
+  };
+  const [cmake] = classify(repos, files);
+  assert.deepEqual(cmake.kinds, ["toolchain"]);
+  assert.deepEqual(cmake.modules, [
+    { name: "deps", kind: "language", kinds: ["language"], uses: ["region", "json_set"] },
+  ]);
+});
+
+test("a plugin with no modules lists none", () => {
+  const repos = [{ repo: "daukle/maven", name: "maven", defaultBranch: "main" }];
+  const [maven] = classify(repos, { "daukle/maven": { pluginLua: MAVEN } });
+  assert.deepEqual(maven.modules, []);
+});
