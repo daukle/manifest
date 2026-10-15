@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T19:14:43.916Z",
+  "generatedAt": "2026-10-15T20:04:50.018Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -84,16 +84,17 @@
         }
       ],
       "release": {
-        "tag": "1.1.0",
-        "publishedAt": "2026-10-12T08:48:56Z"
+        "tag": "1.2.0",
+        "publishedAt": "2026-10-15T19:56:14Z"
       },
-      "tip": "2775bef6f94cc3f4f303ffd62bb6a97197bad396",
+      "tip": "855ee60b9062b0bc1716633d68f389cee47afae5",
       "declares": [
         "toolchain"
       ],
       "uses": [
         "provision",
-        "exec"
+        "exec",
+        "tool"
       ],
       "exports": [
         "lib/compilers"
@@ -413,10 +414,10 @@
         }
       ],
       "release": {
-        "tag": "1.5.0",
-        "publishedAt": "2026-10-15T19:08:31Z"
+        "tag": "1.5.1",
+        "publishedAt": "2026-10-15T20:04:00Z"
       },
-      "tip": "b0dfef98bfafb62d5ce314d2a9649476c1273e7e",
+      "tip": "d82b7f51bafe0e8dd48f43079f48612ed87433e4",
       "declares": [
         "toolchain"
       ],
