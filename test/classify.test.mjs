@@ -152,3 +152,28 @@ test("a plugin with no modules lists none", () => {
   const [maven] = classify(repos, { "daukle/maven": { pluginLua: MAVEN } });
   assert.deepEqual(maven.modules, []);
 });
+
+test("a plugin's catalog reaches its manifest entry", () => {
+  const repos = [{ repo: "daukle/node", name: "node", defaultBranch: "main", archived: false }];
+  const files = { "daukle/node": {
+    pluginLua: 'daukle.plugin{ api = 1, uses = { "exec" } }\ndaukle.toolchain{ name = "node" }\n',
+    catalog: { detect: [{ files: ["package.json"], contains: [], scope: "tree" }], replaces: {}, warnings: [] },
+  } };
+  const [entry] = classify(repos, files);
+  assert.deepEqual(entry.detect, [{ files: ["package.json"], contains: [], scope: "tree" }]);
+  assert.deepEqual(entry.replaces, {});
+});
+
+test("a plugin with no catalog still carries both fields, empty", () => {
+  const repos = [{ repo: "daukle/path", name: "path", defaultBranch: "main", archived: false }];
+  const files = { "daukle/path": { pluginLua: 'daukle.plugin{ api = 1 }\n' } };
+  const [entry] = classify(repos, files);
+  assert.deepEqual(entry.detect, []);
+  assert.deepEqual(entry.replaces, {});
+});
+
+test("a plugin with no release carries a null asset, not a url to a missing tag", () => {
+  const repos = [{ repo: "daukle/new", name: "new", defaultBranch: "main", archived: false }];
+  const files = { "daukle/new": { pluginLua: 'daukle.plugin{ api = 1 }\n', release: null } };
+  assert.equal(classify(repos, files)[0].asset, null);
+});

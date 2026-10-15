@@ -1,6 +1,8 @@
 // The one module that touches the network, kept separate so every other module
 // is a pure function and the test suite never needs a token or a fixture server.
 
+import { createHash } from "node:crypto";
+
 const API = "https://api.github.com";
 
 export function makeClient({ token, fetchImpl = fetch } = {}) {
@@ -47,6 +49,19 @@ export function makeClient({ token, fetchImpl = fetch } = {}) {
         `https://raw.githubusercontent.com/${repo}/${ref}/${path}`, { headers });
       if (!response.ok) return null;
       return response.text();
+    },
+
+    // Hashed from the bytes the release serves, never from a working tree:
+    // core.autocrlf rewrites a checkout, and a digest of that stops matching.
+    async assetDigest(repo, tag, name) {
+      const url = `https://github.com/${repo}/releases/download/${tag}/${name}`;
+      const response = await fetchImpl(url, { headers });
+      if (response.status === 404) return null;
+      if (!response.ok) {
+        throw new Error(`${url} answered ${response.status} ${response.statusText}`);
+      }
+      const bytes = Buffer.from(await response.arrayBuffer());
+      return createHash("sha256").update(bytes).digest("hex");
     },
 
     async listFiles(repo, path, ref, suffix = "") {

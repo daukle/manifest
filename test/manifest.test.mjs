@@ -64,3 +64,32 @@ test("core and guide are lifted out of the plugin list", () => {
   assert.equal(built.guide.id, "guide");
   assert.deepEqual(built.plugins.map((e) => e.id), ["java"]);
 });
+
+test("two plugins replacing the same foreign plugin is a warning", () => {
+  const built = buildManifest([
+    entry("core", "core"),
+    { ...entry("github", "publisher"), replaces: { gradle: { plugins: ["x.release"] } } },
+    { ...entry("other", "publisher"), replaces: { gradle: { plugins: ["x.release"] } } },
+  ]);
+  assert.equal(built.warnings.length, 1);
+  assert.match(built.warnings[0], /x\.release.*github.*other|x\.release.*other.*github/);
+});
+
+test("three plugins claiming one foreign plugin give two warnings", () => {
+  const replaces = { gradle: { plugins: ["x.release"] } };
+  const built = buildManifest([
+    entry("core", "core"),
+    { ...entry("a", "publisher"), replaces },
+    { ...entry("b", "publisher"), replaces },
+    { ...entry("c", "publisher"), replaces },
+  ]);
+  assert.equal(built.warnings.length, 2);
+});
+
+test("one plugin naming the same foreign plugin under two kinds is not a double claim", () => {
+  const built = buildManifest([
+    entry("core", "core"),
+    { ...entry("a", "publisher"), replaces: { gradle: { plugins: ["x"], dependencies: ["x"] } } },
+  ]);
+  assert.deepEqual(built.warnings, []);
+});
