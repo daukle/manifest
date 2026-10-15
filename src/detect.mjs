@@ -63,6 +63,13 @@ async function moduleSourcesOf(client, repo, ref, tree) {
   return sources;
 }
 
+// A truncated or unreadable tree cannot say a file is absent, and getFile
+// answers null for a missing one.
+async function catalogTextOf(client, repo, ref, tree) {
+  if (!tree.truncated && !tree.paths.includes("catalog.json")) return null;
+  return client.getFile(repo, "catalog.json", ref);
+}
+
 export async function runDetect({ org = ORG, client, generatedAt }) {
   const repos = (await client.listOrgRepos(org)).filter(
     (repo) => !IGNORED[repo.name] && !SUPERSEDED.test(repo.name) && !repo.private);
@@ -80,8 +87,7 @@ export async function runDetect({ org = ORG, client, generatedAt }) {
     // API entirely.
     const wikiPages = await client.listFiles(repo, "wiki", defaultBranch, ".md");
     const tree = await client.treeOf(repo, defaultBranch);
-    const catalogText = tree.paths.includes("catalog.json")
-      ? await client.getFile(repo, "catalog.json", defaultBranch) : null;
+    const catalogText = await catalogTextOf(client, repo, defaultBranch, tree);
     const catalog = catalogText === null ? null : readCatalog(catalogText, repo);
     if (catalog) catalogWarnings.push(...catalog.warnings);
     const release = await client.latestRelease(repo);

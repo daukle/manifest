@@ -8,7 +8,7 @@ const CATALOG = JSON.stringify({
   replaces: { gradle: { plugins: ["x.release"] } },
 });
 
-function fakeClient({ catalogs, digests = {} }) {
+function fakeClient({ catalogs, digests = {}, truncated = false }) {
   const catalogReads = [];
   const digestReads = [];
   const repoRow = (name) => ({ repo: `daukle/${name}`, name, defaultBranch: "main", private: false });
@@ -22,8 +22,10 @@ function fakeClient({ catalogs, digests = {} }) {
       return path === "plugin.lua" && repo !== "daukle/daukle" ? PLUGIN_LUA : null;
     },
     listFiles: async () => [],
+    listDirectory: async () => [],
     treeOf: async (repo) => {
       const text = catalogs[repo.split("/")[1]];
+      if (truncated) return { paths: [], truncated: true };
       return { paths: text === undefined ? [] : ["catalog.json"], truncated: false };
     },
     latestRelease: async () => ({ tag: "1.0.0", publishedAt: "then" }),
@@ -36,8 +38,8 @@ function fakeClient({ catalogs, digests = {} }) {
   return { client, catalogReads, digestReads };
 }
 
-const detectFor = async (catalogs, digests) => {
-  const { client, catalogReads, digestReads } = fakeClient({ catalogs, digests });
+const detectFor = async (catalogs, digests, truncated = false) => {
+  const { client, catalogReads, digestReads } = fakeClient({ catalogs, digests, truncated });
   const manifest = await runDetect({ client, generatedAt: "now" });
   return { manifest, catalogReads, digestReads, byId: Object.fromEntries(manifest.plugins.map((p) => [p.id, p])) };
 };
@@ -81,4 +83,19 @@ test("a release without a plugin.lua asset pins nothing and warns", async () => 
 test("a repository without plugin.lua is never asked for a digest", async () => {
   const { digestReads } = await detectFor({ node: undefined }, { node: "abc123" });
   assert.deepEqual(digestReads.map(([repo]) => repo), ["daukle/node"]);
+});
+
+test("a truncated tree still publishes a catalog.json that exists", async () => {
+  const { byId, manifest } = await detectFor({ node: CATALOG }, { node: "abc123" }, true);
+  assert.deepEqual(byId.node.detect, [{ files: ["package.json"], contains: [], scope: "tree" }]);
+  assert.deepEqual(byId.node.replaces, { gradle: { plugins: ["x.release"] } });
+  assert.deepEqual(manifest.warnings, []);
+});
+
+test("a truncated tree with no catalog.json carries empty fields and no warning", async () => {
+  const { byId, manifest, catalogReads } = await detectFor({ node: undefined }, { node: "abc123" }, true);
+  assert.deepEqual(catalogReads, ["daukle/node"]);
+  assert.deepEqual(byId.node.detect, []);
+  assert.deepEqual(byId.node.replaces, {});
+  assert.deepEqual(manifest.warnings, []);
 });
