@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T00:26:58.457Z",
+  "generatedAt": "2026-10-15T16:31:56.165Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -45,10 +45,10 @@
       }
     ],
     "release": {
-      "tag": "0.8.0",
-      "publishedAt": "2026-10-15T00:13:49Z"
+      "tag": "0.8.1",
+      "publishedAt": "2026-10-15T16:28:36Z"
     },
-    "tip": "9915feea1ffeffec0e2968f3b4d2a46a7da4cac6"
+    "tip": "fbe8b57a7542894f75dca103f021e8a0d5e515dd"
   },
   "plugins": [
     {
@@ -98,7 +98,10 @@
       "exports": [
         "lib/compilers"
       ],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "toolchain"
+      ]
     },
     {
       "id": "java",
@@ -160,7 +163,10 @@
         "lib/launcher",
         "lib/entries"
       ],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "toolchain"
+      ]
     },
     {
       "id": "node",
@@ -198,7 +204,10 @@
       "exports": [
         "lib/runtimes"
       ],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "toolchain"
+      ]
     },
     {
       "id": "maven",
@@ -228,7 +237,10 @@
         "lib/pom",
         "lib/graph"
       ],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "resolver"
+      ]
     },
     {
       "id": "npm",
@@ -263,7 +275,10 @@
         "json_parse"
       ],
       "exports": [],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "language"
+      ]
     },
     {
       "id": "github",
@@ -287,21 +302,28 @@
         }
       ],
       "release": {
-        "tag": "1.0.0",
-        "publishedAt": "2026-10-03T21:25:32Z"
+        "tag": "1.1.0",
+        "publishedAt": "2026-10-15T15:38:58Z"
       },
-      "tip": "921c17e5843f0ba87886cf790260ea6c1068b80d",
+      "tip": "b50f9fa95faf931e20e0c6637c5de43192b3900a",
       "declares": [
-        "source"
+        "source",
+        "publisher"
       ],
       "uses": [
         "fetch",
         "cache",
         "env",
-        "parse"
+        "parse",
+        "exec",
+        "provision"
       ],
       "exports": [],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "source",
+        "publisher"
+      ]
     },
     {
       "id": "path",
@@ -325,7 +347,10 @@
         "parse"
       ],
       "exports": [],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "source"
+      ]
     },
     {
       "id": "github-release",
@@ -340,7 +365,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-13T12:40:58Z"
       },
-      "tip": "4c73b98a2799b5a47c5ab9af3985f140b1d5ed5b",
+      "tip": "e702955aab469f5ba1fac073f58a2e685e501d33",
       "declares": [
         "publisher"
       ],
@@ -350,7 +375,10 @@
         "env"
       ],
       "exports": [],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "publisher"
+      ]
     },
     {
       "id": "lifecycle",
@@ -371,7 +399,10 @@
       "exports": [
         "lib/names"
       ],
-      "requires": []
+      "requires": [],
+      "kinds": [
+        "library"
+      ]
     },
     {
       "id": "cmake",
@@ -427,6 +458,9 @@
           "repo": "daukle/c",
           "id": "c"
         }
+      ],
+      "kinds": [
+        "toolchain"
       ]
     },
     {
@@ -530,6 +564,9 @@
           "repo": "daukle/java",
           "id": "java"
         }
+      ],
+      "kinds": [
+        "toolchain"
       ]
     }
   ],
@@ -541,7 +578,7 @@
     "wikiPages": [],
     "examples": [],
     "release": null,
-    "tip": "33f4672999a23b93b84e6572cee9c6f1c404f9e6"
+    "tip": "a9130347a3e8e67bd4726a8b79ad415b595dc35b"
   },
   "warnings": []
 }
