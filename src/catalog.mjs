@@ -22,20 +22,39 @@ export function hasBareHyphen(pattern) {
   return false;
 }
 
+function isPlainObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function isStringArray(value) {
+  return Array.isArray(value) && value.every((item) => typeof item === "string");
+}
+
 function refuse(repo, reason) {
   return { detect: [], replaces: {}, warnings: [`${repo}: catalog.json ${reason}`] };
 }
 
 function readRule(rule) {
-  if (!Array.isArray(rule.files) || rule.files.length === 0) return { reason: "has a rule with no files" };
+  if (!isPlainObject(rule)) return { reason: "has a rule that is not an object" };
+  if (!isStringArray(rule.files) || rule.files.length === 0 || rule.files.includes("")) {
+    return { reason: "has a rule whose files are missing or not non-empty strings" };
+  }
   const scope = rule.scope ?? "root";
   if (!SCOPES.includes(scope)) return { reason: `has a rule whose scope "${scope}" is not root or tree` };
   const contains = rule.contains ?? [];
+  if (!isStringArray(contains)) return { reason: "has a rule whose contains is not an array of strings" };
   const bare = contains.find(hasBareHyphen);
   if (bare !== undefined) {
     return { reason: `has the pattern "${bare}", whose bare - is a lazy quantifier; write %-` };
   }
   return { rule: { files: rule.files, contains, scope } };
+}
+
+function readReplaces(replaces) {
+  const wellFormed = isPlainObject(replaces) && Object.values(replaces).every(
+    (tool) => isPlainObject(tool) && Object.values(tool).every(isStringArray),
+  );
+  return wellFormed ? {} : { reason: "has replaces that is not tool -> kind -> array of strings" };
 }
 
 export function readCatalog(text, repo) {
@@ -45,11 +64,18 @@ export function readCatalog(text, repo) {
   } catch (error) {
     return refuse(repo, `is not valid JSON (${error.message})`);
   }
+  if (!isPlainObject(parsed)) return refuse(repo, "is not a JSON object");
+  if (parsed.detect !== undefined && !Array.isArray(parsed.detect)) {
+    return refuse(repo, "has a detect that is not an array");
+  }
+  const replaces = parsed.replaces ?? {};
+  const replacesProblem = readReplaces(replaces);
+  if (replacesProblem.reason) return refuse(repo, replacesProblem.reason);
   const detect = [];
   for (const rule of parsed.detect ?? []) {
     const read = readRule(rule);
     if (read.reason) return refuse(repo, read.reason);
     detect.push(read.rule);
   }
-  return { detect, replaces: parsed.replaces ?? {}, warnings: [] };
+  return { detect, replaces, warnings: [] };
 }

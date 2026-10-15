@@ -47,3 +47,31 @@ test("a rule with no files is refused", () => {
   const text = JSON.stringify({ detect: [{ contains: ["x"] }] });
   assert.match(readCatalog(text, "daukle/f").warnings[0], /files/);
 });
+
+const structurallyWrong = {
+  "a null document": "null",
+  "an array document": "[]",
+  "a number document": "5",
+  "a string document": '"x"',
+  "detect that is not an array": '{"detect": {}}',
+  "a null rule": '{"detect": [null]}',
+  "a numeric rule": '{"detect": [5]}',
+  "a non-string file": '{"detect": [{"files": [1]}]}',
+  "an empty-string file": '{"detect": [{"files": [""]}]}',
+  "contains that is not an array": '{"detect": [{"files": ["a"], "contains": "x"}]}',
+  "a non-string pattern": '{"detect": [{"files": ["a"], "contains": [1]}]}',
+  "a non-string scope": '{"detect": [{"files": ["a"], "scope": 1}]}',
+  "replaces that is not an object": '{"replaces": []}',
+  "a tool that is not an object": '{"replaces": {"gradle": "x"}}',
+  "a kind that is not an array": '{"replaces": {"gradle": {"plugins": "x"}}}',
+  "a kind holding a non-string": '{"replaces": {"gradle": {"plugins": [1]}}}',
+};
+
+for (const [name, text] of Object.entries(structurallyWrong)) {
+  test(`${name} is refused with a warning, never a throw`, () => {
+    const read = readCatalog(text, "daukle/w");
+    assert.deepEqual(read.detect, []);
+    assert.deepEqual(read.replaces, {});
+    assert.match(read.warnings[0], /daukle\/w: catalog\.json/);
+  });
+}
