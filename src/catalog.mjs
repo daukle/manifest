@@ -41,7 +41,7 @@ function refuse(repo, reason) {
 
 function isDirectoryName(name) {
   return typeof name === "string" && name !== "" && name !== "." && name !== ".."
-    && !/[/\\*?:\u0000-\u001f]/.test(name);
+    && !/[/\\*?:\u0000-\u001f\u007f]/.test(name);
 }
 
 function readRule(rule) {
@@ -81,7 +81,7 @@ export function readCatalog(text, repo) {
   const replaces = parsed.replaces ?? {};
   const replacesProblem = readReplaces(replaces);
   if (replacesProblem.reason) return refuse(repo, replacesProblem.reason);
-  const skip = parsed.skip ?? [];
+  const skip = parsed.skip === undefined ? [] : parsed.skip;
   if (!Array.isArray(skip) || !skip.every(isDirectoryName)) {
     return refuse(repo, "has a skip that is not an array of single directory names");
   }

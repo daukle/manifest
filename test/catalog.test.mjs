@@ -91,6 +91,9 @@ const badSkips = {
   "a skip name that is two dots": '{"skip": [".."]}',
   "a skip name holding a colon": '{"skip": ["c:"]}',
   "a non-string skip name": '{"skip": [1]}',
+  "a skip name holding a control character": '{"skip": ["a\\u0001"]}',
+  "a skip name holding DEL": '{"skip": ["a\\u007f"]}',
+  "a null skip": '{"skip": null}',
 };
 
 for (const [name, text] of Object.entries(badSkips)) {
