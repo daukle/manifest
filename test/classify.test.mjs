@@ -157,11 +157,13 @@ test("a plugin's catalog reaches its manifest entry", () => {
   const repos = [{ repo: "daukle/node", name: "node", defaultBranch: "main", archived: false }];
   const files = { "daukle/node": {
     pluginLua: 'daukle.plugin{ api = 1, uses = { "exec" } }\ndaukle.toolchain{ name = "node" }\n',
-    catalog: { detect: [{ files: ["package.json"], contains: [], scope: "tree" }], replaces: {}, warnings: [] },
+    catalog: { detect: [{ files: ["package.json"], contains: [], scope: "tree" }], replaces: {},
+               skip: ["node_modules"], warnings: [] },
   } };
   const [entry] = classify(repos, files);
   assert.deepEqual(entry.detect, [{ files: ["package.json"], contains: [], scope: "tree" }]);
   assert.deepEqual(entry.replaces, {});
+  assert.deepEqual(entry.skip, ["node_modules"]);
 });
 
 test("a plugin with no catalog still carries both fields, empty", () => {
@@ -170,6 +172,7 @@ test("a plugin with no catalog still carries both fields, empty", () => {
   const [entry] = classify(repos, files);
   assert.deepEqual(entry.detect, []);
   assert.deepEqual(entry.replaces, {});
+  assert.deepEqual(entry.skip, []);
 });
 
 test("a plugin with no release carries a null asset, not a url to a missing tag", () => {

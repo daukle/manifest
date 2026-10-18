@@ -76,6 +76,34 @@ for (const [name, text] of Object.entries(structurallyWrong)) {
   });
 }
 
+test("skip is read as a list of directory names, empty when absent", () => {
+  assert.deepEqual(readCatalog(JSON.stringify({ skip: ["node_modules"] }), "daukle/k").skip, ["node_modules"]);
+  assert.deepEqual(readCatalog(valid, "daukle/x").skip, []);
+});
+
+const badSkips = {
+  "skip that is not an array": '{"skip": "x"}',
+  "an empty skip name": '{"skip": [""]}',
+  "a skip name holding a slash": '{"skip": ["a/b"]}',
+  "a skip name holding a backslash": '{"skip": ["a\\\\b"]}',
+  "a skip name holding a wildcard": '{"skip": ["*"]}',
+  "a skip name that is a dot": '{"skip": ["."]}',
+  "a skip name that is two dots": '{"skip": [".."]}',
+  "a skip name holding a colon": '{"skip": ["c:"]}',
+  "a non-string skip name": '{"skip": [1]}',
+  "a skip name holding a control character": '{"skip": ["a\\u0001"]}',
+  "a skip name holding DEL": '{"skip": ["a\\u007f"]}',
+  "a null skip": '{"skip": null}',
+};
+
+for (const [name, text] of Object.entries(badSkips)) {
+  test(`${name} is refused with a warning`, () => {
+    const read = readCatalog(text, "daukle/q");
+    assert.deepEqual(read.skip, []);
+    assert.match(read.warnings[0], /daukle\/q: catalog\.json .*skip/);
+  });
+}
+
 test("a literal ] right after [ or [^ does not end the set early", () => {
   const text = JSON.stringify({ detect: [{ files: ["a"], contains: ["[^]a-z]", "[]a-z]"] }] });
   assert.deepEqual(readCatalog(text, "daukle/b").warnings, []);
