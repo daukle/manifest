@@ -36,7 +36,12 @@ function isStringArray(value) {
 }
 
 function refuse(repo, reason) {
-  return { detect: [], replaces: {}, warnings: [`${repo}: catalog.json ${reason}`] };
+  return { detect: [], replaces: {}, skip: [], warnings: [`${repo}: catalog.json ${reason}`] };
+}
+
+function isDirectoryName(name) {
+  return typeof name === "string" && name !== "" && name !== "." && name !== ".."
+    && !/[/\\*?:\u0000-\u001f]/.test(name);
 }
 
 function readRule(rule) {
@@ -76,11 +81,15 @@ export function readCatalog(text, repo) {
   const replaces = parsed.replaces ?? {};
   const replacesProblem = readReplaces(replaces);
   if (replacesProblem.reason) return refuse(repo, replacesProblem.reason);
+  const skip = parsed.skip ?? [];
+  if (!Array.isArray(skip) || !skip.every(isDirectoryName)) {
+    return refuse(repo, "has a skip that is not an array of single directory names");
+  }
   const detect = [];
   for (const rule of parsed.detect ?? []) {
     const read = readRule(rule);
     if (read.reason) return refuse(repo, read.reason);
     detect.push(read.rule);
   }
-  return { detect, replaces, warnings: [] };
+  return { detect, replaces, skip, warnings: [] };
 }
