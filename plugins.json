@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T07:27:56.469Z",
+  "generatedAt": "2026-10-18T09:05:19.470Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -45,12 +45,13 @@
       }
     ],
     "release": {
-      "tag": "0.10.0",
-      "publishedAt": "2026-10-18T07:16:18Z"
+      "tag": "0.10.1",
+      "publishedAt": "2026-10-18T09:02:55Z"
     },
-    "tip": "ee1d966c4f237e94373fda30dca395963fa5f3d6",
+    "tip": "9254961b321cc5dd806e6cea71ca2750ac00c27c",
     "detect": [],
     "replaces": {},
+    "skip": [],
     "asset": null
   },
   "plugins": [
@@ -93,6 +94,7 @@
       "tip": "855ee60b9062b0bc1716633d68f389cee47afae5",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/c/releases/download/1.2.0/plugin.lua",
         "sha256": "afcc35fe50b5bf991e03ab799e189a257b54d9ff3a6fad68e03ed6f709f79298"
@@ -160,6 +162,7 @@
       "tip": "742e0c6c0af09bdedd5fb89a871db29640bb6cae",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/java/releases/download/1.4.0/plugin.lua",
         "sha256": "fd4c7e6f2e594ec8beccf35b8b647bcc5c296e08a43af89969674408f23331d6"
@@ -209,7 +212,7 @@
         "tag": "1.1.0",
         "publishedAt": "2026-10-07T11:28:22Z"
       },
-      "tip": "d8f1efd9dfb618631ee12bc5055333354f9224fe",
+      "tip": "77ca0254090b7075bb75f4f72371ca0406d67807",
       "detect": [
         {
           "files": [
@@ -222,6 +225,9 @@
         }
       ],
       "replaces": {},
+      "skip": [
+        "node_modules"
+      ],
       "asset": {
         "url": "https://github.com/daukle/node/releases/download/1.1.0/plugin.lua",
         "sha256": "339d0cbaaa9a2be2cceff9ffa6ff4e453aff6085e08653c98bc297c60a6856dc"
@@ -260,6 +266,7 @@
       "tip": "9e407e11e610d2298fc5d3e5aca1947484620237",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/maven/releases/download/1.3.0/plugin.lua",
         "sha256": "18c2794a611e947c4fc46cbcb140b28b10ae7d768d513a970eb7fa06d00b44c7"
@@ -311,6 +318,7 @@
       "tip": "c30c578819128e1256c9ffd3a7f45d16d940b9b7",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/npm/releases/download/1.0.0/plugin.lua",
         "sha256": "365d8cfa6ce8130c8fdf40d6724727a0477c0ec77b4290362567764cf077849d"
@@ -363,6 +371,7 @@
           ]
         }
       },
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/github/releases/download/1.1.0/plugin.lua",
         "sha256": "b1021b987892d85526ada2e3d746d7c59ed5173c9088aedb38bbe8dd8d11af9a"
@@ -403,6 +412,7 @@
       "tip": "639d1e1f3e952e965bdc3520c08affe1a0644158",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/path/releases/download/1.0.0/plugin.lua",
         "sha256": "d976a23237313f7eb75ce47f8ffc0c0e3ed7c15d4604c8ec1a2b437de64b1303"
@@ -437,6 +447,7 @@
       "tip": "9c0349a82d52c90acd8c0305f50539439745fa65",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/lifecycle/releases/download/1.0.0/plugin.lua",
         "sha256": "cc6b7bded429c0259db4c84f450b5f47f8202a75fe5944188037475d77d3d60d"
@@ -487,6 +498,7 @@
       "tip": "e248929c0ddbed98f49ea43e054e74495c21b2ca",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/cmake/releases/download/1.6.0/plugin.lua",
         "sha256": "e751432472466d2cdf2fd8ba10137f6771d96705a7ea452384dc7a30b27a37e2"
@@ -608,6 +620,7 @@
       "tip": "479e89b2ebf2e19080b25a3343421e8e96722c4c",
       "detect": [],
       "replaces": {},
+      "skip": [],
       "asset": {
         "url": "https://github.com/daukle/gradle/releases/download/1.13.1/plugin.lua",
         "sha256": "425def269d712f2dce2cbad5064132c0aee24ca2fad377b53a55363c22e9f8c5"
@@ -654,6 +667,7 @@
     "tip": "fa42fc91115a0414db95eae6ef3c2097a96a4482",
     "detect": [],
     "replaces": {},
+    "skip": [],
     "asset": null
   },
   "warnings": []
