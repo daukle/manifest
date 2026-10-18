@@ -155,6 +155,7 @@ export function classify(repos, files) {
       tip: found.tip || null,
       detect: found.catalog ? found.catalog.detect : [],
       replaces: found.catalog ? found.catalog.replaces : {},
+      skip: found.catalog ? found.catalog.skip : [],
       asset: found.release && found.assetSha
         ? { url: `https://github.com/${repo.repo}/releases/download/${found.release.tag}/plugin.lua`,
             sha256: found.assetSha }
