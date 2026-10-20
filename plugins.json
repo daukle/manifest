@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T09:38:03.007Z",
+  "generatedAt": "2026-10-20T20:20:09.204Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -156,16 +156,16 @@
         }
       ],
       "release": {
-        "tag": "1.4.0",
-        "publishedAt": "2026-10-13T06:27:40Z"
+        "tag": "1.5.0",
+        "publishedAt": "2026-10-20T19:21:57Z"
       },
       "tip": "b86bb67b97525fd35139b0f6736bad9b78ae84d3",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/java/releases/download/1.4.0/plugin.lua",
-        "sha256": "fd4c7e6f2e594ec8beccf35b8b647bcc5c296e08a43af89969674408f23331d6"
+        "url": "https://github.com/daukle/java/releases/download/1.5.0/plugin.lua",
+        "sha256": "94cecf60ad502541ce8fd1e087e335bf5eff65c67b651b94e21a9979e62b9b88"
       },
       "declares": [
         "toolchain"
@@ -615,16 +615,30 @@
         }
       ],
       "release": {
-        "tag": "1.13.1",
-        "publishedAt": "2026-10-14T21:02:15Z"
+        "tag": "1.14.0",
+        "publishedAt": "2026-10-20T20:19:33Z"
       },
-      "tip": "479e89b2ebf2e19080b25a3343421e8e96722c4c",
-      "detect": [],
+      "tip": "6be63c6e03b984b57747eb4a571b2e7b2acbb0a5",
+      "detect": [
+        {
+          "files": [
+            "build.gradle",
+            "build.gradle.kts",
+            "settings.gradle",
+            "settings.gradle.kts"
+          ],
+          "contains": [],
+          "scope": "root"
+        }
+      ],
       "replaces": {},
-      "skip": [],
+      "skip": [
+        ".gradle",
+        "build"
+      ],
       "asset": {
-        "url": "https://github.com/daukle/gradle/releases/download/1.13.1/plugin.lua",
-        "sha256": "425def269d712f2dce2cbad5064132c0aee24ca2fad377b53a55363c22e9f8c5"
+        "url": "https://github.com/daukle/gradle/releases/download/1.14.0/plugin.lua",
+        "sha256": "ebe2fd7d4cb8afa921dfe2e23dbcfa390e15a05bc2086336531ba18548c3eec2"
       },
       "declares": [
         "toolchain"
@@ -635,7 +649,9 @@
         "exec",
         "write",
         "read",
-        "parse"
+        "parse",
+        "list",
+        "json_parse"
       ],
       "exports": [
         "lib/distributions",
