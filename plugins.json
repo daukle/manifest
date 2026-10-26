@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T16:10:12.601Z",
+  "generatedAt": "2026-10-26T16:49:56.862Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -261,16 +261,16 @@
       ],
       "examples": [],
       "release": {
-        "tag": "1.5.0",
-        "publishedAt": "2026-10-26T16:09:44Z"
+        "tag": "1.5.1",
+        "publishedAt": "2026-10-26T16:49:32Z"
       },
-      "tip": "2434f10e116f5715677938c201eb15b2c9b02117",
+      "tip": "c42be7330b607bb0322bce10987b0c9bc31fa6ee",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/maven/releases/download/1.5.0/plugin.lua",
-        "sha256": "fd8fcdc096c6f89a0e0429356d666480b5379b2a6f13532d1a3788b2c094e884"
+        "url": "https://github.com/daukle/maven/releases/download/1.5.1/plugin.lua",
+        "sha256": "39dba98f6a5b9d009bd296d823e2d6b2836edcd9d5486e2c4561ffb5832a9377"
       },
       "declares": [
         "toolchain"
