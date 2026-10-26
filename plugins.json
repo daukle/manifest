@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T16:49:56.862Z",
+  "generatedAt": "2026-10-26T19:07:40.316Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -617,10 +617,10 @@
         }
       ],
       "release": {
-        "tag": "1.14.0",
-        "publishedAt": "2026-10-20T20:19:33Z"
+        "tag": "1.15.0",
+        "publishedAt": "2026-10-26T19:07:15Z"
       },
-      "tip": "6be63c6e03b984b57747eb4a571b2e7b2acbb0a5",
+      "tip": "18ca9297a5bfba20d12b30350132744fff75ad21",
       "detect": [
         {
           "files": [
@@ -639,8 +639,8 @@
         "build"
       ],
       "asset": {
-        "url": "https://github.com/daukle/gradle/releases/download/1.14.0/plugin.lua",
-        "sha256": "ebe2fd7d4cb8afa921dfe2e23dbcfa390e15a05bc2086336531ba18548c3eec2"
+        "url": "https://github.com/daukle/gradle/releases/download/1.15.0/plugin.lua",
+        "sha256": "dfa80a34073c0eef352aef6ce6b28ab272faee56223361f5fbe85e31207e6cab"
       },
       "declares": [
         "toolchain"
@@ -653,7 +653,10 @@
         "read",
         "parse",
         "list",
-        "json_parse"
+        "json_parse",
+        "pin",
+        "fetch",
+        "cache"
       ],
       "exports": [
         "lib/distributions",
@@ -667,6 +670,11 @@
           "alias": "java",
           "repo": "daukle/java",
           "id": "java"
+        },
+        {
+          "alias": "maven",
+          "repo": "daukle/maven",
+          "id": "maven"
         }
       ],
       "kinds": [
