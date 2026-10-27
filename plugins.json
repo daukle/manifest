@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T08:10:32.460Z",
+  "generatedAt": "2026-10-27T10:03:10.188Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -620,7 +620,7 @@
         "tag": "1.16.1",
         "publishedAt": "2026-10-27T08:10:09Z"
       },
-      "tip": "3594c344f53c7ffad71cc3c40220abc791f0a9fd",
+      "tip": "54d55029bd13d8698bbf216c177677f3ee24244a",
       "detect": [
         {
           "files": [
