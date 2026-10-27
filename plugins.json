@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T19:07:40.316Z",
+  "generatedAt": "2026-10-27T06:43:26.511Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -261,16 +261,16 @@
       ],
       "examples": [],
       "release": {
-        "tag": "1.5.1",
-        "publishedAt": "2026-10-26T16:49:32Z"
+        "tag": "1.5.2",
+        "publishedAt": "2026-10-27T06:42:42Z"
       },
-      "tip": "c42be7330b607bb0322bce10987b0c9bc31fa6ee",
+      "tip": "e2201b7f1c381da7593bbeef2ee496ba01c41240",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/maven/releases/download/1.5.1/plugin.lua",
-        "sha256": "39dba98f6a5b9d009bd296d823e2d6b2836edcd9d5486e2c4561ffb5832a9377"
+        "url": "https://github.com/daukle/maven/releases/download/1.5.2/plugin.lua",
+        "sha256": "a52a043a0bf2c0caa9b1abd8745745cfd0770ecfc508170478e07c3d64851c63"
       },
       "declares": [
         "toolchain"
@@ -617,10 +617,10 @@
         }
       ],
       "release": {
-        "tag": "1.15.0",
-        "publishedAt": "2026-10-26T19:07:15Z"
+        "tag": "1.16.0",
+        "publishedAt": "2026-10-27T06:42:51Z"
       },
-      "tip": "18ca9297a5bfba20d12b30350132744fff75ad21",
+      "tip": "89a9c9039f03b43bc23305e90839f99168d65bd6",
       "detect": [
         {
           "files": [
@@ -639,8 +639,8 @@
         "build"
       ],
       "asset": {
-        "url": "https://github.com/daukle/gradle/releases/download/1.15.0/plugin.lua",
-        "sha256": "dfa80a34073c0eef352aef6ce6b28ab272faee56223361f5fbe85e31207e6cab"
+        "url": "https://github.com/daukle/gradle/releases/download/1.16.0/plugin.lua",
+        "sha256": "5218c7a63eb1b174d604a7591d57bda7aff4127b4ce523dfffe00ba4e0705918"
       },
       "declares": [
         "toolchain"
