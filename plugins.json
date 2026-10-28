@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T14:52:32.232Z",
+  "generatedAt": "2026-10-28T17:43:29.495Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -35,12 +35,10 @@
       {
         "name": "daukle-wrapper-bootstrap",
         "files": [
-          ".daukle/wrapper.toml",
           "ABOUT.md",
-          "daukle",
-          "daukle.ps1",
           "daukle.toml",
-          "needs-tools"
+          "needs-tools",
+          "uses-release"
         ]
       }
     ],
@@ -48,7 +46,7 @@
       "tag": "0.14.0",
       "publishedAt": "2026-10-28T14:51:27Z"
     },
-    "tip": "19af37947f8c935f0db4014a79f8f6f942ce4db6",
+    "tip": "5a6c9ed88f1f421c1165ec74fdb52467da251a2a",
     "detect": [],
     "replaces": {},
     "skip": [],
@@ -619,10 +617,10 @@
         }
       ],
       "release": {
-        "tag": "1.19.0",
-        "publishedAt": "2026-10-28T12:46:33Z"
+        "tag": "1.20.0",
+        "publishedAt": "2026-10-28T17:42:55Z"
       },
-      "tip": "fd07c7fd9c48c74d42cc01120bee37f7d5e4faa7",
+      "tip": "e8d4a05f21ff398c68bb659ed826cad92f3ab7da",
       "detect": [
         {
           "files": [
@@ -641,8 +639,8 @@
         "build"
       ],
       "asset": {
-        "url": "https://github.com/daukle/gradle/releases/download/1.19.0/plugin.lua",
-        "sha256": "909d8e2e317e0e23504750822c43f7c8ea35490a08bc098914e46c1cb40e5052"
+        "url": "https://github.com/daukle/gradle/releases/download/1.20.0/plugin.lua",
+        "sha256": "60a3d4aad32413138f7f74932dce41de48afca3aeb430c8699abc90048e43b49"
       },
       "declares": [
         "toolchain"
