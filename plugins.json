@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T20:49:11.802Z",
+  "generatedAt": "2026-10-29T05:25:19.912Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -617,10 +617,10 @@
         }
       ],
       "release": {
-        "tag": "1.20.0",
-        "publishedAt": "2026-10-28T17:42:55Z"
+        "tag": "2.0.0",
+        "publishedAt": "2026-10-29T05:24:30Z"
       },
-      "tip": "e8d4a05f21ff398c68bb659ed826cad92f3ab7da",
+      "tip": "ab2a4eef2213fc4a01a9aceca1e52773052ec071",
       "detect": [
         {
           "files": [
@@ -639,8 +639,8 @@
         "build"
       ],
       "asset": {
-        "url": "https://github.com/daukle/gradle/releases/download/1.20.0/plugin.lua",
-        "sha256": "60a3d4aad32413138f7f74932dce41de48afca3aeb430c8699abc90048e43b49"
+        "url": "https://github.com/daukle/gradle/releases/download/2.0.0/plugin.lua",
+        "sha256": "9d863d6188dcea6449afec50ed6715a75ec71fbde92cd2eba9c836d9ba1a3b4c"
       },
       "declares": [
         "toolchain"
