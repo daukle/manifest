@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T05:25:19.912Z",
+  "generatedAt": "2026-10-29T08:07:19.755Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -43,10 +43,10 @@
       }
     ],
     "release": {
-      "tag": "0.14.1",
-      "publishedAt": "2026-10-28T20:45:55Z"
+      "tag": "0.15.0",
+      "publishedAt": "2026-10-29T07:04:39Z"
     },
-    "tip": "1326592ded1b21b5f00b0c48f6adce7d6eb3f07b",
+    "tip": "68522bd2e4c22f26ad86ac5951ec6071f7b52490",
     "detect": [],
     "replaces": {},
     "skip": [],
@@ -259,16 +259,16 @@
       ],
       "examples": [],
       "release": {
-        "tag": "1.6.0",
-        "publishedAt": "2026-10-27T12:23:24Z"
+        "tag": "1.7.0",
+        "publishedAt": "2026-10-29T07:08:58Z"
       },
-      "tip": "cb0271bc232cda46653b6a4bcbb384dd12065163",
+      "tip": "74e50606e5e030e593f8eb3e6962d91fdc96a820",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/maven/releases/download/1.6.0/plugin.lua",
-        "sha256": "90d9df979eb9694d780529bca2fdebb0ad496e04bef2ede53aff7d672f3b6e0c"
+        "url": "https://github.com/daukle/maven/releases/download/1.7.0/plugin.lua",
+        "sha256": "d3a2342b6c116be914647b9b8ce8d2a757d30b4d34cf21cc1f1403056ccc4501"
       },
       "declares": [
         "toolchain"
@@ -557,7 +557,6 @@
           "name": "gradle-fat-jar",
           "files": [
             "ABOUT.md",
-            "daukle.lua",
             "daukle.toml",
             "daukle/maven/classpath.lua",
             "needs-tools",
@@ -578,7 +577,6 @@
           "files": [
             "ABOUT.md",
             "build-logic/src/main/java/com/example/logic/HelloPlugin.java",
-            "daukle.lua",
             "daukle.toml",
             "daukle/maven/classpath.lua",
             "needs-tools"
@@ -617,10 +615,10 @@
         }
       ],
       "release": {
-        "tag": "2.0.0",
-        "publishedAt": "2026-10-29T05:24:30Z"
+        "tag": "2.1.0",
+        "publishedAt": "2026-10-29T08:06:52Z"
       },
-      "tip": "ab2a4eef2213fc4a01a9aceca1e52773052ec071",
+      "tip": "c0d197ec124f06c79be01a2081dfaeef53349f14",
       "detect": [
         {
           "files": [
@@ -639,8 +637,8 @@
         "build"
       ],
       "asset": {
-        "url": "https://github.com/daukle/gradle/releases/download/2.0.0/plugin.lua",
-        "sha256": "9d863d6188dcea6449afec50ed6715a75ec71fbde92cd2eba9c836d9ba1a3b4c"
+        "url": "https://github.com/daukle/gradle/releases/download/2.1.0/plugin.lua",
+        "sha256": "1a924d21807fa8abf919db9e76d785c49d43d6dac7400b13488e9013d6550e93"
       },
       "declares": [
         "toolchain"
