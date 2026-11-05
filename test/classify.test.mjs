@@ -23,9 +23,9 @@ daukle.plugin{
 daukle.toolchain{ name = "gradle" }
 `;
 
-const NPM = `
-daukle.plugin{ api = 1, uses = { "region", "json_set" } }
-daukle.language{ name = "npm" }
+const PATH = `
+daukle.plugin{ api = 1, uses = { "read", "parse" } }
+daukle.source{ name = "path" }
 `;
 
 const LIFECYCLE = `
@@ -49,9 +49,8 @@ test("a plugin that declares nothing is a library, not a mistake", () => {
   assert.deepEqual(read.exports, ["lib/names"]);
 });
 
-test("a language and a source are read from what they declare", () => {
-  assert.equal(readPlugin(NPM).kind, "language");
-  assert.equal(readPlugin(`daukle.source{ name = "github" }`).kind, "source");
+test("a source is read from what it declares", () => {
+  assert.equal(readPlugin(PATH).kind, "source");
 });
 
 test("requires resolves the repository from the url, because the alias differs", () => {
@@ -90,7 +89,7 @@ test("classify skips ignored, superseded and plugin-less repos", () => {
   ];
   const files = {
     "daukle/maven": { pluginLua: MAVEN, wikiPages: ["index.md"], examples: ["a"] },
-    "daukle/npm-pre20260922": { pluginLua: NPM },
+    "daukle/npm-pre20260922": { pluginLua: PATH },
     "daukle/nothing": {},
   };
   const out = classify(repos, files);
@@ -115,7 +114,7 @@ test("a chunk declaring two capabilities lists both, and kind stays the first", 
 
 test("a single-kind plugin has exactly its one kind in kinds", () => {
   assert.deepEqual(readPlugin(MAVEN).kinds, ["resolver"]);
-  assert.deepEqual(readPlugin(NPM).kinds, ["language"]);
+  assert.deepEqual(readPlugin(PATH).kinds, ["source"]);
   assert.deepEqual(readPlugin(LIFECYCLE).kinds, ["library"]);
   assert.deepEqual(kindsOf({ declares: ["toolchain"], uses: ["exec"] }), ["toolchain"]);
 });
@@ -137,13 +136,13 @@ test("a plugin's modules are listed with their own kinds and grant", () => {
   const files = {
     "daukle/cmake": {
       pluginLua: GRADLE,
-      moduleSources: { deps: NPM },
+      moduleSources: { deps: PATH },
     },
   };
   const [cmake] = classify(repos, files);
   assert.deepEqual(cmake.kinds, ["toolchain"]);
   assert.deepEqual(cmake.modules, [
-    { name: "deps", kind: "language", kinds: ["language"], uses: ["region", "json_set"] },
+    { name: "deps", kind: "source", kinds: ["source"], uses: ["read", "parse"] },
   ]);
 });
 

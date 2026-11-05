@@ -1,6 +1,6 @@
 // Turning the classified rows into the document consumers read.
 
-const ORDER = ["core", "toolchain", "resolver", "language", "source", "publisher", "library",
+const ORDER = ["core", "toolchain", "resolver", "source", "publisher", "library",
                "guide"];
 
 /**
