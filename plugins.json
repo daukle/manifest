@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T11:18:58.239Z",
+  "generatedAt": "2026-11-05T16:26:16.175Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -41,10 +41,10 @@
       }
     ],
     "release": {
-      "tag": "0.19.0",
-      "publishedAt": "2026-11-05T08:57:44Z"
+      "tag": "0.20.0",
+      "publishedAt": "2026-11-05T16:24:35Z"
     },
-    "tip": "505101ed73a0a596fad867b33c0dd250da687a2a",
+    "tip": "e4ecacbf034afc73f5e9970b4cb069ca81c4681f",
     "detect": [],
     "replaces": {},
     "skip": [],
@@ -199,16 +199,17 @@
           "files": [
             "ABOUT.md",
             "daukle.toml",
+            "daukle/npm/lock.lua",
             "needs-tools",
             "src/main.mjs"
           ]
         }
       ],
       "release": {
-        "tag": "3.2.0",
-        "publishedAt": "2026-11-04T20:54:58Z"
+        "tag": "4.0.0",
+        "publishedAt": "2026-11-05T14:56:29Z"
       },
-      "tip": "f4740167fc8abc5852297d6558b420f0ec0d7acc",
+      "tip": "9f3c64fcab76d4d94a32af17fd841c183f54e4fa",
       "detect": [
         {
           "files": [
@@ -223,14 +224,15 @@
         "node_modules"
       ],
       "asset": {
-        "url": "https://github.com/daukle/node/releases/download/3.2.0/plugin.lua",
-        "sha256": "a17e72aa646864a884f47cd4c1ebcb2793dcc44630dccc280e9ae374d53e8b05"
+        "url": "https://github.com/daukle/node/releases/download/4.0.0/plugin.lua",
+        "sha256": "5836f7c2cd32a305bc3488738266edc38e849de4b2527d9028e559c38aad388c"
       },
       "declares": [
         "toolchain"
       ],
       "uses": [
         "provision",
+        "artifact",
         "exec",
         "read",
         "parse",
@@ -604,6 +606,54 @@
           "alias": "maven",
           "repo": "daukle/maven",
           "id": "maven"
+        }
+      ],
+      "kinds": [
+        "toolchain"
+      ],
+      "modules": []
+    },
+    {
+      "id": "npm",
+      "repo": "daukle/npm",
+      "kind": "toolchain",
+      "defaultBranch": "main",
+      "wikiPages": [],
+      "examples": [],
+      "release": {
+        "tag": "2.1.0",
+        "publishedAt": "2026-11-05T14:13:44Z"
+      },
+      "tip": "15300b881456de331def645bcc50bc5ea3766f83",
+      "detect": [],
+      "replaces": {
+        "npm": {
+          "dependencies": [
+            "npm"
+          ]
+        }
+      },
+      "skip": [],
+      "asset": {
+        "url": "https://github.com/daukle/npm/releases/download/2.1.0/plugin.lua",
+        "sha256": "12d18faf6b72cffc6da76afe678d231ee7820229f63fd466206021dd89a2d5f6"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "provision",
+        "exec",
+        "write",
+        "pin",
+        "json_parse"
+      ],
+      "exports": [],
+      "requires": [
+        {
+          "alias": "node",
+          "repo": "daukle/node",
+          "id": "node"
         }
       ],
       "kinds": [
