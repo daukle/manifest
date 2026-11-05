@@ -18,7 +18,6 @@ is a label somebody chose; a declaration is what core enforces.
 | `core` | the `daukle/daukle` repository |
 | `toolchain` | declares `daukle.toolchain` **and** uses `exec` or `provision` |
 | `resolver` | declares `daukle.toolchain` and uses **neither** |
-| `language` | declares `daukle.language` |
 | `source` | declares `daukle.source` |
 | `library` | declares nothing, and exists to be required by others |
 | `guide`, `examples` | the two repositories that aggregate the rest |
