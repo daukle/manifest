@@ -24,7 +24,7 @@ test("a plugin appears after everything it requires", () => {
 // answers -1 and nothing reports it. `publisher` was classified before it was
 // ordered, so the first publisher in the org would have led the public site.
 test("every kind classify can return is ordered, so none sorts ahead of core", () => {
-  const kinds = ["core", "toolchain", "resolver", "language", "source", "publisher", "library"];
+  const kinds = ["core", "toolchain", "resolver", "source", "publisher", "library"];
   const out = topological(kinds.map((kind) => entry(kind, kind))).map((e) => e.id);
 
   assert.equal(out[0], "core");
@@ -32,7 +32,7 @@ test("every kind classify can return is ordered, so none sorts ahead of core", (
 });
 
 test("the order is stable, not merely correct", () => {
-  const rows = [entry("node", "toolchain"), entry("cmake", "toolchain"), entry("npm", "language")];
+  const rows = [entry("node", "toolchain"), entry("cmake", "toolchain"), entry("path", "source")];
   assert.deepEqual(topological(rows).map((e) => e.id), topological([...rows].reverse()).map((e) => e.id));
 });
 

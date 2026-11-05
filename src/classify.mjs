@@ -20,7 +20,6 @@ export const SUPERSEDED = /-pre\d{8}$/;
 
 const DECLARATIONS = [
   ["toolchain", /daukle\.toolchain\s*\{/],
-  ["language", /daukle\.language\s*\{/],
   ["source", /daukle\.source\s*\{/],
   ["publisher", /daukle\.publisher\s*\{/],
 ];
@@ -83,7 +82,6 @@ export function kindOf({ declares, uses }) {
     const runsSomething = uses.includes("exec") || uses.includes("provision");
     return runsSomething ? "toolchain" : "resolver";
   }
-  if (declares.includes("language")) return "language";
   if (declares.includes("source")) return "source";
   if (declares.includes("publisher")) return "publisher";
   // Declares nothing and is still a plugin: it exists to be required by
@@ -99,7 +97,7 @@ export function kindOf({ declares, uses }) {
 export function kindsOf({ declares, uses }) {
   const kinds = [];
   if (declares.includes("toolchain")) kinds.push(kindOf({ declares: ["toolchain"], uses }));
-  for (const kind of ["language", "source", "publisher"]) {
+  for (const kind of ["source", "publisher"]) {
     if (declares.includes(kind)) kinds.push(kind);
   }
   return kinds.length > 0 ? kinds : ["library"];
