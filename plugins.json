@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T21:59:07.712Z",
+  "generatedAt": "2026-11-05T09:04:19.464Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -27,9 +27,7 @@
           "ABOUT.md",
           "daukle.lua",
           "daukle.toml",
-          "expected/package.json",
-          "package.json",
-          "producer/daukle.toml"
+          "plugins/banner.lua"
         ]
       },
       {
@@ -43,10 +41,10 @@
       }
     ],
     "release": {
-      "tag": "0.18.0",
-      "publishedAt": "2026-11-02T23:05:01Z"
+      "tag": "0.19.0",
+      "publishedAt": "2026-11-05T08:57:44Z"
     },
-    "tip": "5e0e74da01603dd6f136b3026062f3ff693eb3e1",
+    "tip": "505101ed73a0a596fad867b33c0dd250da687a2a",
     "detect": [],
     "replaces": {},
     "skip": [],
@@ -89,7 +87,7 @@
         "tag": "1.2.0",
         "publishedAt": "2026-10-15T19:56:14Z"
       },
-      "tip": "855ee60b9062b0bc1716633d68f389cee47afae5",
+      "tip": "dd3c88a05e7200b11883860b88d60087eb717f0c",
       "detect": [],
       "replaces": {},
       "skip": [],
@@ -210,7 +208,7 @@
         "tag": "3.2.0",
         "publishedAt": "2026-11-04T20:54:58Z"
       },
-      "tip": "3eabee789c58bc2c740d305916e6389bfebdf9a1",
+      "tip": "f4740167fc8abc5852297d6558b420f0ec0d7acc",
       "detect": [
         {
           "files": [
@@ -294,52 +292,6 @@
       "modules": []
     },
     {
-      "id": "npm",
-      "repo": "daukle/npm",
-      "kind": "language",
-      "defaultBranch": "main",
-      "wikiPages": [
-        "index.md"
-      ],
-      "examples": [
-        {
-          "name": "npm-dependency-ledger",
-          "files": [
-            "ABOUT.md",
-            "daukle.toml",
-            "expected/package.json",
-            "package.json",
-            "producer/daukle.toml"
-          ]
-        }
-      ],
-      "release": {
-        "tag": "1.0.0",
-        "publishedAt": "2026-10-01T18:55:00Z"
-      },
-      "tip": "c30c578819128e1256c9ffd3a7f45d16d940b9b7",
-      "detect": [],
-      "replaces": {},
-      "skip": [],
-      "asset": {
-        "url": "https://github.com/daukle/npm/releases/download/1.0.0/plugin.lua",
-        "sha256": "365d8cfa6ce8130c8fdf40d6724727a0477c0ec77b4290362567764cf077849d"
-      },
-      "declares": [
-        "language"
-      ],
-      "uses": [
-        "json_set",
-        "json_parse"
-      ],
-      "exports": [],
-      "requires": [],
-      "kinds": [
-        "language"
-      ],
-      "modules": []
-    },
-    {
       "id": "github",
       "repo": "daukle/github",
       "kind": "source",
@@ -347,24 +299,12 @@
       "wikiPages": [
         "index.md"
       ],
-      "examples": [
-        {
-          "name": "github-release-source",
-          "files": [
-            "ABOUT.md",
-            "daukle.toml",
-            "expected/package.json",
-            "needs-tools",
-            "package.json",
-            "producer/daukle.toml"
-          ]
-        }
-      ],
+      "examples": [],
       "release": {
         "tag": "1.1.0",
         "publishedAt": "2026-10-15T15:38:58Z"
       },
-      "tip": "cf2ef7aeb346e1cc3366808577d482683a45afca",
+      "tip": "b70776dcd87cc7f05887dbed769ca97e58a83ac6",
       "detect": [],
       "replaces": {
         "gradle": {
@@ -411,7 +351,7 @@
         "tag": "1.0.0",
         "publishedAt": "2026-10-01T18:55:03Z"
       },
-      "tip": "639d1e1f3e952e965bdc3520c08affe1a0644158",
+      "tip": "e6463312041c55c4c541eae2e85732385802a77c",
       "detect": [],
       "replaces": {},
       "skip": [],
@@ -494,16 +434,16 @@
         }
       ],
       "release": {
-        "tag": "1.7.0",
-        "publishedAt": "2026-10-27T13:37:15Z"
+        "tag": "2.0.0",
+        "publishedAt": "2026-11-05T08:56:45Z"
       },
-      "tip": "4c76e3d74bb7362f1b7f813d99ebe66fce566502",
+      "tip": "b8841497dfb4ede1fe073b4c1af31bb8edabd292",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/cmake/releases/download/1.7.0/plugin.lua",
-        "sha256": "00a98246980f3fbc25008896a7181181025dfc19f21e31bdbd008f0a9b5ee155"
+        "url": "https://github.com/daukle/cmake/releases/download/2.0.0/plugin.lua",
+        "sha256": "2c2dad8c50a2de192ccc6ab37282a84d8e03429340f0a75762c69d3a9f539030"
       },
       "declares": [
         "toolchain"
@@ -531,18 +471,7 @@
       "kinds": [
         "toolchain"
       ],
-      "modules": [
-        {
-          "name": "deps",
-          "kind": "language",
-          "kinds": [
-            "language"
-          ],
-          "uses": [
-            "region"
-          ]
-        }
-      ]
+      "modules": []
     },
     {
       "id": "gradle",
@@ -691,7 +620,7 @@
     "wikiPages": [],
     "examples": [],
     "release": null,
-    "tip": "fa42fc91115a0414db95eae6ef3c2097a96a4482",
+    "tip": "10167fa43188dd16d5f5033e98fecc127cc3b55a",
     "detect": [],
     "replaces": {},
     "skip": [],
