@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T19:43:49.313Z",
+  "generatedAt": "2026-11-06T20:14:11.099Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -647,6 +647,53 @@
         "write",
         "pin",
         "json_parse"
+      ],
+      "exports": [],
+      "requires": [
+        {
+          "alias": "node",
+          "repo": "daukle/node",
+          "id": "node"
+        }
+      ],
+      "kinds": [
+        "toolchain"
+      ],
+      "modules": []
+    },
+    {
+      "id": "pnpm",
+      "repo": "daukle/pnpm",
+      "kind": "toolchain",
+      "defaultBranch": "main",
+      "wikiPages": [],
+      "examples": [],
+      "release": {
+        "tag": "1.0.0",
+        "publishedAt": "2026-11-06T20:13:36Z"
+      },
+      "tip": "0f734938a2091c7e06b214eeb7908b6a793c1641",
+      "detect": [],
+      "replaces": {
+        "pnpm": {
+          "dependencies": [
+            "pnpm"
+          ]
+        }
+      },
+      "skip": [],
+      "asset": {
+        "url": "https://github.com/daukle/pnpm/releases/download/1.0.0/plugin.lua",
+        "sha256": "4584bd875a6ef8374d8e122e4e4d997046a7553690b38aca245707bb2df241c6"
+      },
+      "declares": [
+        "toolchain"
+      ],
+      "uses": [
+        "provision",
+        "exec",
+        "write",
+        "pin"
       ],
       "exports": [],
       "requires": [
