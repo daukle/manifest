@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T08:58:50.575Z",
+  "generatedAt": "2026-11-06T10:13:09.703Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -206,10 +206,10 @@
         }
       ],
       "release": {
-        "tag": "4.5.1",
-        "publishedAt": "2026-11-06T08:58:16Z"
+        "tag": "4.6.0",
+        "publishedAt": "2026-11-06T10:12:43Z"
       },
-      "tip": "5bbff8720c131fc8a021f3aa9bec0072a9fa9fc9",
+      "tip": "67c080138b72560d27954d76979a87e62f8fe950",
       "detect": [
         {
           "files": [
@@ -224,8 +224,8 @@
         "node_modules"
       ],
       "asset": {
-        "url": "https://github.com/daukle/node/releases/download/4.5.1/plugin.lua",
-        "sha256": "0b6516503bbf81534e224181b66bed62d5c5194267751c84b039ae5be24ffb40"
+        "url": "https://github.com/daukle/node/releases/download/4.6.0/plugin.lua",
+        "sha256": "442d60cf51b25484ea474be3c3fdd959b550237e17f77f23fa9ebcdd43e0f95a"
       },
       "declares": [
         "toolchain"
