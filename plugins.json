@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T15:58:00.572Z",
+  "generatedAt": "2026-11-09T18:23:14.252Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -209,7 +209,7 @@
         "tag": "4.22.1",
         "publishedAt": "2026-11-09T15:57:22Z"
       },
-      "tip": "116e6542f6d657694ccaa7f3e5a75fcf853b6c65",
+      "tip": "776b1e608b43ffda9aceb3ea0f6c3c6228623afc",
       "detect": [
         {
           "files": [
@@ -622,10 +622,10 @@
       "wikiPages": [],
       "examples": [],
       "release": {
-        "tag": "2.3.1",
-        "publishedAt": "2026-11-06T12:24:35Z"
+        "tag": "2.4.1",
+        "publishedAt": "2026-11-09T17:50:28Z"
       },
-      "tip": "a9e47a0138c18730e06205ea72addb72526d618a",
+      "tip": "6a1b8241073beaf4db68b7b788fb39c64b36e3f7",
       "detect": [],
       "replaces": {
         "npm": {
@@ -636,8 +636,8 @@
       },
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/npm/releases/download/2.3.1/plugin.lua",
-        "sha256": "c22b1f97d292863a6c3988853d4db324a9abc505fd0b1f6f853fdf0f804a9351"
+        "url": "https://github.com/daukle/npm/releases/download/2.4.1/plugin.lua",
+        "sha256": "42569b511744343adb7af083ddc58162085f662719491599d68aa278bf947225"
       },
       "declares": [
         "toolchain"
@@ -670,10 +670,10 @@
       "wikiPages": [],
       "examples": [],
       "release": {
-        "tag": "1.2.0",
-        "publishedAt": "2026-11-09T14:28:17Z"
+        "tag": "1.3.1",
+        "publishedAt": "2026-11-09T17:50:39Z"
       },
-      "tip": "33cc1e8eb8d4e0e0c755298f26ac9e15502b0fef",
+      "tip": "2584467f1227a7d694e720e8e71c0ac642b35544",
       "detect": [],
       "replaces": {
         "npm": {
@@ -684,8 +684,8 @@
       },
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/pnpm/releases/download/1.2.0/plugin.lua",
-        "sha256": "c315c000027556a70e23e46cbe850ab9c8024e63cbe6b0b2e3b6e0e426a34a46"
+        "url": "https://github.com/daukle/pnpm/releases/download/1.3.1/plugin.lua",
+        "sha256": "09f14bab4bc04734439d1cc36df4b87da95d4e49aefeea00d399c008208903e4"
       },
       "declares": [
         "toolchain"
@@ -694,7 +694,8 @@
         "provision",
         "exec",
         "write",
-        "pin"
+        "pin",
+        "json_parse"
       ],
       "exports": [],
       "requires": [
