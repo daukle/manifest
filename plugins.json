@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T11:11:17.473Z",
+  "generatedAt": "2026-11-10T12:39:36.779Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -670,10 +670,10 @@
       "wikiPages": [],
       "examples": [],
       "release": {
-        "tag": "1.4.1",
-        "publishedAt": "2026-11-09T22:23:50Z"
+        "tag": "1.5.0",
+        "publishedAt": "2026-11-10T12:39:03Z"
       },
-      "tip": "c208acc2e3d14ef53399115fc615b21c0f83b814",
+      "tip": "134fb97cd46abcf43bce4d85865ea8f7bca68140",
       "detect": [],
       "replaces": {
         "npm": {
@@ -684,8 +684,8 @@
       },
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/pnpm/releases/download/1.4.1/plugin.lua",
-        "sha256": "862078394c05ae615c3723d9d292b5535d1d1dff191c4dcaea5ea81e7c7e4e38"
+        "url": "https://github.com/daukle/pnpm/releases/download/1.5.0/plugin.lua",
+        "sha256": "7dbb9a4446005563b24630827fd0b44b71ecddc85d59dba47d34f10dc4348092"
       },
       "declares": [
         "toolchain"
@@ -695,7 +695,10 @@
         "exec",
         "write",
         "pin",
-        "json_parse"
+        "json_parse",
+        "read",
+        "list",
+        "parse"
       ],
       "exports": [],
       "requires": [
