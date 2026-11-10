@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T18:17:40.669Z",
+  "generatedAt": "2026-11-10T20:13:39.061Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -206,10 +206,10 @@
         }
       ],
       "release": {
-        "tag": "4.27.0",
-        "publishedAt": "2026-11-10T18:17:05Z"
+        "tag": "4.27.1",
+        "publishedAt": "2026-11-10T20:03:18Z"
       },
-      "tip": "fb574f37b853c1f6934aed814c4d61a60542ac6d",
+      "tip": "815fb8345af0003aeeff26cf9912c4245c616074",
       "detect": [
         {
           "files": [
@@ -224,8 +224,8 @@
         "node_modules"
       ],
       "asset": {
-        "url": "https://github.com/daukle/node/releases/download/4.27.0/plugin.lua",
-        "sha256": "9d62bae4b5689fc0cd48256605213804c6ddb5888a67ad7bf575894e690abca2"
+        "url": "https://github.com/daukle/node/releases/download/4.27.1/plugin.lua",
+        "sha256": "f2f44dfc8d8801258b094088a8a80525864b61c7e78b82881bc804a72cab732b"
       },
       "declares": [
         "toolchain"
@@ -260,16 +260,16 @@
       ],
       "examples": [],
       "release": {
-        "tag": "1.7.0",
-        "publishedAt": "2026-10-29T07:08:58Z"
+        "tag": "1.7.1",
+        "publishedAt": "2026-11-10T19:03:47Z"
       },
-      "tip": "74e50606e5e030e593f8eb3e6962d91fdc96a820",
+      "tip": "5788a981e163dbfedf40c38f1065861905742dd4",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/maven/releases/download/1.7.0/plugin.lua",
-        "sha256": "d3a2342b6c116be914647b9b8ce8d2a757d30b4d34cf21cc1f1403056ccc4501"
+        "url": "https://github.com/daukle/maven/releases/download/1.7.1/plugin.lua",
+        "sha256": "b3349c30acd9653ac0f474cab441e33f52947393a52d7a71e300b109b8954eb6"
       },
       "declares": [
         "toolchain"
@@ -437,16 +437,16 @@
         }
       ],
       "release": {
-        "tag": "2.0.0",
-        "publishedAt": "2026-11-05T08:56:45Z"
+        "tag": "2.1.0",
+        "publishedAt": "2026-11-10T19:57:38Z"
       },
-      "tip": "b8841497dfb4ede1fe073b4c1af31bb8edabd292",
+      "tip": "8f2ba8c27360be391a2c0b2b085eccd51567836e",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/cmake/releases/download/2.0.0/plugin.lua",
-        "sha256": "2c2dad8c50a2de192ccc6ab37282a84d8e03429340f0a75762c69d3a9f539030"
+        "url": "https://github.com/daukle/cmake/releases/download/2.1.0/plugin.lua",
+        "sha256": "1354088556b7bf6468c1bbaaf997407f1150c69c7d32e30776ca1823fa5f96e2"
       },
       "declares": [
         "toolchain"
@@ -547,10 +547,10 @@
         }
       ],
       "release": {
-        "tag": "2.16.3",
-        "publishedAt": "2026-11-10T15:37:24Z"
+        "tag": "2.16.4",
+        "publishedAt": "2026-11-10T19:58:48Z"
       },
-      "tip": "e76208d4e73fa8624352df018c684a02a19f1139",
+      "tip": "8dd641b28fa7f034201b90403290089272ecd642",
       "detect": [
         {
           "files": [
@@ -569,8 +569,8 @@
         "build"
       ],
       "asset": {
-        "url": "https://github.com/daukle/gradle/releases/download/2.16.3/plugin.lua",
-        "sha256": "56ee6502c13f6521c596e707639b6e975a3c2228b67f9bd95e019da60e545caf"
+        "url": "https://github.com/daukle/gradle/releases/download/2.16.4/plugin.lua",
+        "sha256": "9f2573a6450e75ff2a89e756df5e706d23712eed961f7da901689ab891bc1204"
       },
       "declares": [
         "toolchain"
