@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T20:13:39.061Z",
+  "generatedAt": "2026-11-10T21:25:16.303Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -206,10 +206,10 @@
         }
       ],
       "release": {
-        "tag": "4.27.1",
-        "publishedAt": "2026-11-10T20:03:18Z"
+        "tag": "4.27.2",
+        "publishedAt": "2026-11-10T21:24:56Z"
       },
-      "tip": "815fb8345af0003aeeff26cf9912c4245c616074",
+      "tip": "33b93f6b2d8d0b805c7db129ab9b47e93e50d058",
       "detect": [
         {
           "files": [
@@ -224,8 +224,8 @@
         "node_modules"
       ],
       "asset": {
-        "url": "https://github.com/daukle/node/releases/download/4.27.1/plugin.lua",
-        "sha256": "f2f44dfc8d8801258b094088a8a80525864b61c7e78b82881bc804a72cab732b"
+        "url": "https://github.com/daukle/node/releases/download/4.27.2/plugin.lua",
+        "sha256": "a9ec75c05ad3ecabd43fded8781ee57c7f23472f442407c2121cec7e7779a033"
       },
       "declares": [
         "toolchain"
@@ -437,16 +437,16 @@
         }
       ],
       "release": {
-        "tag": "2.1.0",
-        "publishedAt": "2026-11-10T19:57:38Z"
+        "tag": "2.2.0",
+        "publishedAt": "2026-11-10T21:09:33Z"
       },
-      "tip": "8f2ba8c27360be391a2c0b2b085eccd51567836e",
+      "tip": "018b83eb001bdc8704dda4fe0076ef732c19c905",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/cmake/releases/download/2.1.0/plugin.lua",
-        "sha256": "1354088556b7bf6468c1bbaaf997407f1150c69c7d32e30776ca1823fa5f96e2"
+        "url": "https://github.com/daukle/cmake/releases/download/2.2.0/plugin.lua",
+        "sha256": "bce138ab95254fa706f09f0aae9c25cacfe1936d667787e07d9a9c9b573468b9"
       },
       "declares": [
         "toolchain"
@@ -670,10 +670,10 @@
       "wikiPages": [],
       "examples": [],
       "release": {
-        "tag": "1.5.0",
-        "publishedAt": "2026-11-10T12:39:03Z"
+        "tag": "1.5.1",
+        "publishedAt": "2026-11-10T20:53:05Z"
       },
-      "tip": "134fb97cd46abcf43bce4d85865ea8f7bca68140",
+      "tip": "26bc827738bdd55fbc57ccc14ad66f2f38aff34f",
       "detect": [],
       "replaces": {
         "npm": {
@@ -684,8 +684,8 @@
       },
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/pnpm/releases/download/1.5.0/plugin.lua",
-        "sha256": "7dbb9a4446005563b24630827fd0b44b71ecddc85d59dba47d34f10dc4348092"
+        "url": "https://github.com/daukle/pnpm/releases/download/1.5.1/plugin.lua",
+        "sha256": "83e2649cfee21de0e187ef0b755037b22af9f4f647d81d2809caad921612653d"
       },
       "declares": [
         "toolchain"
