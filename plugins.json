@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T07:32:01.105Z",
+  "generatedAt": "2026-11-11T11:01:36.456Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -41,10 +41,10 @@
       }
     ],
     "release": {
-      "tag": "0.24.3",
-      "publishedAt": "2026-11-10T08:19:50Z"
+      "tag": "0.25.0",
+      "publishedAt": "2026-11-11T10:57:21Z"
     },
-    "tip": "0a792afe74b1600e4ece0e23ac17cf4ddd8fdd75",
+    "tip": "54191ca478ffe0a21612e3a2017cf8e695b3f97f",
     "detect": [],
     "replaces": {},
     "skip": [],
@@ -437,16 +437,26 @@
         }
       ],
       "release": {
-        "tag": "2.6.0",
-        "publishedAt": "2026-11-11T07:26:56Z"
+        "tag": "2.7.0",
+        "publishedAt": "2026-11-11T11:01:05Z"
       },
-      "tip": "bc173b5460e68fff0e2497db1aa93d8a399e1238",
-      "detect": [],
+      "tip": "fc436c1747e8b0b7fa976f6a0f5dae7cd0bb369a",
+      "detect": [
+        {
+          "files": [
+            "CMakeLists.txt"
+          ],
+          "contains": [],
+          "scope": "tree"
+        }
+      ],
       "replaces": {},
-      "skip": [],
+      "skip": [
+        "build"
+      ],
       "asset": {
-        "url": "https://github.com/daukle/cmake/releases/download/2.6.0/plugin.lua",
-        "sha256": "0369c623de0bdb79a12d9abaaa2177f20c08bf8ca0f6a8bd5923233b872416d0"
+        "url": "https://github.com/daukle/cmake/releases/download/2.7.0/plugin.lua",
+        "sha256": "c973ede494ecc8acc99e651552b78752655e498ee37a0098a3376da457594be4"
       },
       "declares": [
         "toolchain"
@@ -456,7 +466,10 @@
         "exec",
         "built",
         "read",
-        "parse"
+        "parse",
+        "write",
+        "list",
+        "json_parse"
       ],
       "exports": [],
       "requires": [
