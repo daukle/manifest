@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T21:25:16.303Z",
+  "generatedAt": "2026-11-11T06:28:35.612Z",
   "core": {
     "id": "daukle",
     "repo": "daukle/daukle",
@@ -437,16 +437,16 @@
         }
       ],
       "release": {
-        "tag": "2.2.0",
-        "publishedAt": "2026-11-10T21:09:33Z"
+        "tag": "2.3.0",
+        "publishedAt": "2026-11-11T06:28:07Z"
       },
-      "tip": "018b83eb001bdc8704dda4fe0076ef732c19c905",
+      "tip": "f9f5d97a398a06a5641cbc6ef1fa279e60a3a1db",
       "detect": [],
       "replaces": {},
       "skip": [],
       "asset": {
-        "url": "https://github.com/daukle/cmake/releases/download/2.2.0/plugin.lua",
-        "sha256": "bce138ab95254fa706f09f0aae9c25cacfe1936d667787e07d9a9c9b573468b9"
+        "url": "https://github.com/daukle/cmake/releases/download/2.3.0/plugin.lua",
+        "sha256": "6cdd58c0a3fa2876ef39fcbc0051bb39a79b1c6f8fef7eb4cd2bf419f2277932"
       },
       "declares": [
         "toolchain"
